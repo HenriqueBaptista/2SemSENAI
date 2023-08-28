@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace webapi.filmes.tarde.Domains
 {
@@ -7,14 +8,26 @@ namespace webapi.filmes.tarde.Domains
     /// </summary>
     public class FilmeDomain
     {
+        /// <summary>
+        /// Id do filme
+        /// </summary>
         public int IdFilme { get; set; }
 
+        /// <summary>
+        /// Titulo do filme
+        /// </summary>
         [Required(ErrorMessage = "O título do filme é obrigatório")]
         public string? Titulo { get; set; }
+
+        /// <summary>
+        /// Id do genero do filme
+        /// </summary>
         public int IdGenero { get; set; }
 
 
-        // Referência para a classe GêneroDomain
+        /// <summary>
+        /// Referência para a classe GêneroDomain
+        /// </summary>
         public GeneroDomain? Genero { get; set; }
     }
 }

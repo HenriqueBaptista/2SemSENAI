@@ -1,4 +1,5 @@
 ﻿using System.Data.SqlClient;
+using System.Xml.Linq;
 using webapi.filmes.tarde.Domains;
 using webapi.filmes.tarde.Interfaces;
 
@@ -18,24 +19,86 @@ namespace webapi.filmes.tarde.Repositories
         ///     - SqlServer: User Id = sa; Pwd = Senha
         /// </summary>
         private string StringConexão = "Data Source = NOTE23-S15; Initial Catalog = Filmes; User Id = sa; Pwd = Senai@134";
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="genero"></param>
         public void AtualizarIdCorpo(GeneroDomain genero)
         {
-            throw new NotImplementedException();
-        }
+            using (SqlConnection con = new SqlConnection(StringConexão))
+            {
+                string queryUpdate = "UPDATE Genero SET Nome = @NomeUp WHERE IdGenero = @IdGenero";
 
-        public void AtualizarIdUrl(int id, GeneroDomain genero)
-        {
-            throw new NotImplementedException();
+                using (SqlCommand cmd = new SqlCommand(queryUpdate, con))
+                {
+                    cmd.Parameters.AddWithValue("NomeUp", genero.Nome);
+                    cmd.Parameters.AddWithValue("IdGenero", genero.IdGenero);
+
+                    con.Open();
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
         }
 
         /// <summary>
-        /// Busca determinado objeto gênero através de seu Id
+        /// Atualiza um objeto já adicionado, alterando algum de seus valores. Atualiza através da URL do objeto.
         /// </summary>
-        /// <param name="id"> Id a ser buscado </param>
+        /// <param name="id"> Id a ser procurado </param>
+        /// <param name="genero"> Gênero que terá sessões a serem alteradas </param>
+        public void AtualizarIdUrl(int id, GeneroDomain genero)
+        {
+            using (SqlConnection con = new SqlConnection(StringConexão))
+            {
+                string queryUpdate = "UPDATE Genero SET Nome = @NomeUp WHERE IdGenero = @IdGenero";
+
+                using (SqlCommand cmd = new SqlCommand(queryUpdate, con))
+                {
+                    cmd.Parameters.AddWithValue("NomeUp", genero.Nome);
+                    cmd.Parameters.AddWithValue("IdGenero", id);
+
+                    con.Open();
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Busca um objeto gênero através de seu Id
+        /// </summary>
+        /// <param name="id"> Id do gênero a ser buscado </param>
         /// <returns></returns>
         public GeneroDomain BuscarPorId(int id)
         {
-            throw new NotImplementedException();
+            using (SqlConnection con = new SqlConnection(StringConexão))
+            {
+                string querySelectById = "SELECT IdGenero, Nome FROM Genero WHERE IdGenero = @IdGenero";
+
+                SqlDataReader rdr;
+
+                using (SqlCommand cmd = new SqlCommand(querySelectById, con)) 
+                {
+                    cmd.Parameters.AddWithValue("IdGenero", id);
+
+                    con.Open();
+
+                    rdr = cmd.ExecuteReader();
+
+                    if (rdr.Read())
+                    {
+                        GeneroDomain generoBuscado = new GeneroDomain()
+                        {
+                            IdGenero = Convert.ToInt32(rdr["IdGenero"]),
+                            Nome = rdr["Nome"].ToString()
+                        };
+
+                        return generoBuscado;
+                    }
+                }
+            }
+            return null!;
         }
 
 
@@ -55,7 +118,7 @@ namespace webapi.filmes.tarde.Repositories
                 // Declara o SqlCommand passando a query que será executada e a conexão con com o banco de dados
                 using (SqlCommand cmd = new SqlCommand(queryInsert, con)) 
                 {
-                    cmd.Parameters.AddWithValue("@Nome", novoGenero.Nome);
+                    cmd.Parameters.AddWithValue("Nome", novoGenero.Nome);
 
                     // Abre a conexão com o banco de dados
                     con.Open();
@@ -68,27 +131,25 @@ namespace webapi.filmes.tarde.Repositories
 
 
         /// <summary>
-        /// Deleta um objeto do tipo gênero
+        /// Deleta um gênero
         /// </summary>
-        /// <param name="idDel"> Deleta o gênero pelo seu Id </param>
-        public void Deletar(int idDel)
+        /// <param name="id"> Deleta o gênero pelo seu Id </param>
+        public void Deletar(int id)
         {
-            GeneroDomain genero = new GeneroDomain();
-
-            genero.IdGenero = idDel;
-
             using (SqlConnection con = new SqlConnection(StringConexão))
             {
-                string queryDelete = $"DELETE FROM Genero WHERE IdGenero = {idDel}";
+                string queryDelete = $"DELETE FROM Genero WHERE IdGenero = @IdGenero";
+
+                con.Open();
 
                 using (SqlCommand cmd = new SqlCommand(queryDelete, con))
                 {
-                    con.Open();
+                    cmd.Parameters.AddWithValue("IdGenero", id);
 
                     cmd.ExecuteNonQuery();
                 }
             }
-        }
+        } // Complete
 
 
         /// <summary>

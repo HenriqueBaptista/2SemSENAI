@@ -3,6 +3,9 @@ using webapi.filmes.tarde.Interfaces;
 
 namespace webapi.filmes.tarde.Repositories
 {
+    /// <summary>
+    /// Classe responsável pelo repositório dos filmes
+    /// </summary>
     public class FilmeRepository : IFilmeRepository
     {
         public void AtualizarIdCorpo(FilmeDomain filme)
@@ -10,7 +13,7 @@ namespace webapi.filmes.tarde.Repositories
             throw new NotImplementedException();
         }
 
-        public void AtualizarIdCorpo(int id, FilmeDomain filme)
+        public void AtualizarIdUrl(int id, FilmeDomain filme)
         {
             throw new NotImplementedException();
         }

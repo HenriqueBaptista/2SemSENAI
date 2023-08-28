@@ -85,7 +85,7 @@ namespace webapi.filmes.tarde.Controllers
 
 
         /// <summary>
-        /// Deleta um gênero existente
+        /// Endpoint que acessa o método de deletar um gênero
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -98,11 +98,79 @@ namespace webapi.filmes.tarde.Controllers
                 _generoRepository!.Deletar(id);
 
                 // Retorna um status code
-                return StatusCode(201);
+                return StatusCode(204);
             }
             catch (Exception erro)
             {
                 // Retorna um BadRequest (400) e a mensagem de erro
+                return BadRequest(erro.Message);
+            }
+        }
+
+
+        /// <summary>
+        /// Endpoint que acessa o método buscar por id de um gênero
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpGet("{id}")]
+        public IActionResult GetById(int id)
+        {
+            try
+            {
+                GeneroDomain generoBuscado = _generoRepository!.BuscarPorId(id);
+
+                if (generoBuscado == null)
+                {
+                    return NotFound();
+                }
+
+                return Ok(generoBuscado);
+            }
+            catch (Exception erro)
+            {
+                return BadRequest(erro.Message);
+            }
+        }
+
+
+        /// <summary>
+        /// Endpoint que acessa o método atualizar por corpo
+        /// </summary>
+        /// <param name="genero"></param>
+        /// <returns></returns>
+        [HttpPut]
+        public IActionResult PutByBody(GeneroDomain genero)
+        {
+            try
+            {
+                _generoRepository!.AtualizarIdCorpo(genero);
+
+                return Ok(genero);
+            }
+            catch (Exception erro)
+            {
+                return BadRequest(erro.Message);
+            }
+        }
+
+        /// <summary>
+        /// Endpoint que acessa o método atualizar por url
+        /// </summary>
+        /// <param name="genero"></param>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpPut("{id}")]
+        public IActionResult PutByUrl(GeneroDomain genero, int id)
+        {
+            try
+            {
+                _generoRepository!.AtualizarIdUrl(id, genero);
+                
+                return StatusCode(200);
+            }
+            catch (Exception erro)
+            {
                 return BadRequest(erro.Message);
             }
         }
