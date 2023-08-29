@@ -21,29 +21,30 @@ namespace webapi.filmes.tarde.Repositories
         private string StringConexão = "Data Source = NOTE23-S15; Initial Catalog = Filmes; User Id = sa; Pwd = Senai@134";
 
         /// <summary>
-        /// 
+        /// Atualiza um gênero passando o seu Id pelo corpo da requisição
         /// </summary>
-        /// <param name="genero"></param>
+        /// <param name="genero"> Objeto que será atualizado </param>
         public void AtualizarIdCorpo(GeneroDomain genero)
         {
             using (SqlConnection con = new SqlConnection(StringConexão))
-            {
-                string queryUpdate = "UPDATE Genero SET Nome = @NomeUp WHERE IdGenero = @IdGenero";
-
-                using (SqlCommand cmd = new SqlCommand(queryUpdate, con))
                 {
-                    cmd.Parameters.AddWithValue("NomeUp", genero.Nome);
-                    cmd.Parameters.AddWithValue("IdGenero", genero.IdGenero);
-
-                    con.Open();
+                string queryUpdateByBody = "UPDATE Genero SET Nome = @Nome WHERE IdGenero = @IdGenero";
+                
+                con.Open();
+                
+                using (SqlCommand cmd = new SqlCommand(queryUpdateByBody, con))
+                {
+                    cmd.Parameters.AddWithValue("@Nome", genero.Nome);
+                    cmd.Parameters.AddWithValue("@IdGenero", genero.IdGenero);
 
                     cmd.ExecuteNonQuery();
                 }
             }
-        }
+        } // Complete
+
 
         /// <summary>
-        /// Atualiza um objeto já adicionado, alterando algum de seus valores. Atualiza através da URL do objeto.
+        /// Atualiza um gênero passando o seu Id pela url da requisição
         /// </summary>
         /// <param name="id"> Id a ser procurado </param>
         /// <param name="genero"> Gênero que terá sessões a serem alteradas </param>
@@ -51,19 +52,20 @@ namespace webapi.filmes.tarde.Repositories
         {
             using (SqlConnection con = new SqlConnection(StringConexão))
             {
-                string queryUpdate = "UPDATE Genero SET Nome = @NomeUp WHERE IdGenero = @IdGenero";
+                string queryUpdateUrl = "UPDATE Genero SET Nome = @Nome WHERE IdGenero = @IdGenero";
 
-                using (SqlCommand cmd = new SqlCommand(queryUpdate, con))
+                con.Open();
+
+                using (SqlCommand cmd = new SqlCommand(queryUpdateUrl, con))
                 {
-                    cmd.Parameters.AddWithValue("NomeUp", genero.Nome);
-                    cmd.Parameters.AddWithValue("IdGenero", id);
-
-                    con.Open();
+                    cmd.Parameters.AddWithValue("@Nome", genero.Nome);
+                    cmd.Parameters.AddWithValue("@IdGenero", id);
 
                     cmd.ExecuteNonQuery();
                 }
             }
-        }
+        } // Complete
+
 
         /// <summary>
         /// Busca um objeto gênero através de seu Id
@@ -80,7 +82,7 @@ namespace webapi.filmes.tarde.Repositories
 
                 using (SqlCommand cmd = new SqlCommand(querySelectById, con)) 
                 {
-                    cmd.Parameters.AddWithValue("IdGenero", id);
+                    cmd.Parameters.AddWithValue("@IdGenero", id);
 
                     con.Open();
 
@@ -99,7 +101,7 @@ namespace webapi.filmes.tarde.Repositories
                 }
             }
             return null!;
-        }
+        } // Complete
 
 
         /// <summary>
@@ -118,7 +120,7 @@ namespace webapi.filmes.tarde.Repositories
                 // Declara o SqlCommand passando a query que será executada e a conexão con com o banco de dados
                 using (SqlCommand cmd = new SqlCommand(queryInsert, con)) 
                 {
-                    cmd.Parameters.AddWithValue("Nome", novoGenero.Nome);
+                    cmd.Parameters.AddWithValue("@Nome", novoGenero.Nome);
 
                     // Abre a conexão com o banco de dados
                     con.Open();
@@ -144,7 +146,7 @@ namespace webapi.filmes.tarde.Repositories
 
                 using (SqlCommand cmd = new SqlCommand(queryDelete, con))
                 {
-                    cmd.Parameters.AddWithValue("IdGenero", id);
+                    cmd.Parameters.AddWithValue("@IdGenero", id);
 
                     cmd.ExecuteNonQuery();
                 }

@@ -144,15 +144,31 @@ namespace webapi.filmes.tarde.Controllers
         {
             try
             {
-                _generoRepository!.AtualizarIdCorpo(genero);
+                GeneroDomain generoBuscado = _generoRepository!.BuscarPorId(genero.IdGenero);
 
-                return Ok(genero);
+                if (generoBuscado != null)
+                {
+                    try
+                    {
+                        _generoRepository.AtualizarIdCorpo(genero);
+
+                        return NoContent();
+                    }
+                    catch (Exception erro)
+                    {
+
+                        return BadRequest(erro.Message);
+                    }
+                }
+
+                return NotFound("Gênero não encontrado");
             }
             catch (Exception erro)
             {
                 return BadRequest(erro.Message);
             }
         }
+
 
         /// <summary>
         /// Endpoint que acessa o método atualizar por url
@@ -165,9 +181,23 @@ namespace webapi.filmes.tarde.Controllers
         {
             try
             {
-                _generoRepository!.AtualizarIdUrl(id, genero);
+                GeneroDomain generoBuscado = _generoRepository!.BuscarPorId(id);
+
+                try
+                {
+                    if (generoBuscado != null)
+                    {
+                        _generoRepository.AtualizarIdUrl(id, genero);
+
+                        return NoContent();
+                    }
+                }
+                catch (Exception erro)
+                {
+                    return BadRequest(erro.Message);
+                }
                 
-                return StatusCode(200);
+                return NotFound("Gênero não encontrado");
             }
             catch (Exception erro)
             {
