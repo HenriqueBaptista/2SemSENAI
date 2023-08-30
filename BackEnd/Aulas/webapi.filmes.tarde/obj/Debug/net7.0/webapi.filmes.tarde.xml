@@ -34,6 +34,18 @@
             Endpoint que acessa o método BuscarPorId
             </summary>
         </member>
+        <member name="M:webapi.filmes.tarde.Controllers.FilmeController.Delete(System.Int32)">
+            <summary>
+            Endpoint que acessa o método Deletar
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:webapi.filmes.tarde.Controllers.FilmeController.PutByBody(webapi.filmes.tarde.Domains.FilmeDomain)">
+            <summary>
+            Endpoint que acessa o método AtualizarIdCorpo
+            </summary>
+        </member>
         <member name="T:webapi.filmes.tarde.Controllers.GeneroController">
             <summary>
             Define que a rota de uma requisição será no seguinte formato:
@@ -234,6 +246,16 @@
             Autenticação
                 - Windows: Integrated Security = True
                 - SqlServer: User Id = sa; Pwd = Senha
+            </summary>
+        </member>
+        <member name="M:webapi.filmes.tarde.Repositories.FilmeRepository.AtualizarIdCorpo(webapi.filmes.tarde.Domains.FilmeDomain)">
+            <summary>
+            Atualiza um filme, seu Id passa pelo corpo
+            </summary>
+        </member>
+        <member name="M:webapi.filmes.tarde.Repositories.FilmeRepository.AtualizarIdUrl(System.Int32,webapi.filmes.tarde.Domains.FilmeDomain)">
+            <summary>
+            Atualiza um filme, seu Id passa pela Url
             </summary>
         </member>
         <member name="M:webapi.filmes.tarde.Repositories.FilmeRepository.BuscarPorId(System.Int32)">

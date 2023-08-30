@@ -27,14 +27,44 @@ namespace webapi.filmes.tarde.Repositories
         {
             using (SqlConnection con = new SqlConnection(StringConexao))
             {
+                string queryGetByBody = "UPDATE Filme SET Titulo = @Titulo, IdGenero = @IdGenero WHERE IdFilme = @IdFilme";
 
+                con.Open();
+
+                using (SqlCommand cmd = new SqlCommand(queryGetByBody, con))
+                {
+                    cmd.Parameters.AddWithValue("@Titulo", filme.Titulo);
+                    cmd.Parameters.AddWithValue("@IdGenero", filme.IdGenero);
+                    cmd.Parameters.AddWithValue("IdFilme", filme.IdFilme);
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        } // Complete
+
+
+        /// <summary>
+        /// Atualiza um filme, seu Id passa pela Url
+        /// </summary>
+        public void AtualizarIdUrl(int id, FilmeDomain filme)
+        {
+            using (SqlConnection con = new SqlConnection(StringConexao))
+            {
+                string queryGetByBody = "UPDATE Filme SET Titulo = @Titulo, IdGenero = @IdGenero WHERE IdFilme = @IdFilme";
+
+                con.Open();
+
+                using (SqlCommand cmd = new SqlCommand(queryGetByBody, con))
+                {
+                    cmd.Parameters.AddWithValue("@Titulo", filme.Titulo);
+                    cmd.Parameters.AddWithValue("@IdGenero", filme.IdGenero);
+                    cmd.Parameters.AddWithValue("IdFilme", id);
+
+                    cmd.ExecuteNonQuery();
+                }
             }
         }
 
-        public void AtualizarIdUrl(int id, FilmeDomain filme)
-        {
-            throw new NotImplementedException();
-        }
 
         /// <summary>
         /// Busca um filme por seu Id

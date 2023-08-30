@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Reflection.Metadata.Ecma335;
 using webapi.filmes.tarde.Domains;
 using webapi.filmes.tarde.Interfaces;
 using webapi.filmes.tarde.Repositories;
@@ -99,7 +100,7 @@ namespace webapi.filmes.tarde.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpDelete("{id}")]
-        public IActionResult Delete(int id) 
+        public IActionResult Delete(int id)
         {
             try
             {
@@ -113,6 +114,63 @@ namespace webapi.filmes.tarde.Controllers
                 }
 
                 return NotFound("Não há nenhum filme com o Id");
+            }
+            catch (Exception erro)
+            {
+                return BadRequest(erro.Message);
+            }
+        } // Complete
+
+
+        /// <summary>
+        /// Endpoint que acessa o método AtualizarIdCorpo
+        /// </summary>
+        [HttpPut]
+        public IActionResult PutByBody(FilmeDomain filmeUpdate)
+        {
+            try
+            {
+                FilmeDomain filmeBuscado = _filmeRepository.BuscarPorId(filmeUpdate.IdFilme);
+
+                if (filmeBuscado != null)
+                {
+                    try
+                    {
+                        _filmeRepository.AtualizarIdCorpo(filmeUpdate);
+
+                        return NoContent();
+                    }
+                    catch (Exception erro)
+                    {
+                        return BadRequest(erro.Message);
+                    }
+                }
+                return NotFound("Filme não encontrado");
+            }
+            catch (Exception erro)
+            {
+                return BadRequest(erro.Message);
+            }
+        } // Complete
+
+
+        /// <summary>
+        /// Endpoint que acessa o método AtualizarIdUrl
+        /// </summary>
+        [HttpPut("{id}")]
+        public IActionResult PutByUrl(FilmeDomain filmeUpdate, int id)
+        {
+            try
+            {
+                FilmeDomain filmeBuscado = _filmeRepository.BuscarPorId(id);
+
+                if (filmeBuscado != null)
+                {
+                    _filmeRepository.AtualizarIdUrl(id, filmeUpdate);
+
+                    return NoContent();
+                }
+                return NotFound("Filme não encontrado");
             }
             catch (Exception erro)
             {
