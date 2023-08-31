@@ -15,21 +15,18 @@ namespace webapi.filmes.tarde.Domains
         /// <summary>
         /// Email do usuário
         /// </summary>
-        [Required(ErrorMessage = "É necessário inserir um email!")] public string? Email { get; set; }
+        [Required(ErrorMessage = "O email é obrigatório!")] public string? Email { get; set; }
 
         /// <summary>
         /// Senha do usuário
         /// </summary>
-        [Required(ErrorMessage = "É necessário inserir uma senha!")] public string? Senha { get; set; }
+        [StringLength(20, MinimumLength = 3, ErrorMessage = "O campo senha permite no mínimo 3 caracteres e no máximo 20 caracteres!")]
+        [Required(ErrorMessage = "A senha é obrigatória")]
+        public string? Senha { get; set; }
 
         /// <summary>
-        /// Permissão do usuário - TRUE para administrador, FALSE para comum
+        /// Permissão do usuário
         /// </summary>
-        public bool PermissãoAdmin { get; set; }
-
-        /// <summary>
-        /// Status do usuário - Logado ou deslogado (só é possível logar um por vez)
-        /// </summary>
-        public bool Logado { get; set; }
+        public string? Permissao { get; set; }
     }
 }

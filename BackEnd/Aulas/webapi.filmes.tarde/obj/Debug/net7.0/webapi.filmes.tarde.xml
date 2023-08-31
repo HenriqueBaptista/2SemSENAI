@@ -46,6 +46,11 @@
             Endpoint que acessa o método AtualizarIdCorpo
             </summary>
         </member>
+        <member name="M:webapi.filmes.tarde.Controllers.FilmeController.PutByUrl(webapi.filmes.tarde.Domains.FilmeDomain,System.Int32)">
+            <summary>
+            Endpoint que acessa o método AtualizarIdUrl
+            </summary>
+        </member>
         <member name="T:webapi.filmes.tarde.Controllers.GeneroController">
             <summary>
             Define que a rota de uma requisição será no seguinte formato:
@@ -105,6 +110,31 @@
             <param name="id"></param>
             <returns></returns>
         </member>
+        <member name="T:webapi.filmes.tarde.Controllers.UsuarioController">
+            <summary>
+            Define que a rota de uma requisição será no seguinte formato:
+            Domínio/api/nomeControle
+            exemplo: http://localhost.7242/api/Usuario
+            </summary>
+        </member>
+        <member name="P:webapi.filmes.tarde.Controllers.UsuarioController._usuarioRepository">
+            <summary>
+            Objeto que irá receber os métodos definidos na interface
+            </summary>
+        </member>
+        <member name="M:webapi.filmes.tarde.Controllers.UsuarioController.#ctor">
+            <summary>
+            Construtor que instancia o objeto UsuarioRepository para que haja referência aos métodos do repositório
+            </summary>
+        </member>
+        <member name="M:webapi.filmes.tarde.Controllers.UsuarioController.Login(System.String,System.String)">
+            <summary>
+            Loga um usuário pelo seu email e senha
+            </summary>
+            <param name="email"> Email a ser inserido </param>
+            <param name="senha"> Senha a ser inserida </param>
+            <returns> Um usuário </returns>
+        </member>
         <member name="T:webapi.filmes.tarde.Domains.FilmeDomain">
             <summary>
             Classe que representa a entidade(tabela) Filme
@@ -145,6 +175,31 @@
             Nome do objeto Gênero
             </summary>
         </member>
+        <member name="T:webapi.filmes.tarde.Domains.UsuarioDomain">
+            <summary>
+            Classe que representa a entidade(tabela) Usuario
+            </summary>
+        </member>
+        <member name="P:webapi.filmes.tarde.Domains.UsuarioDomain.IdUsuario">
+            <summary>
+            Id de um usuário já cadastrado
+            </summary>
+        </member>
+        <member name="P:webapi.filmes.tarde.Domains.UsuarioDomain.Email">
+            <summary>
+            Email do usuário
+            </summary>
+        </member>
+        <member name="P:webapi.filmes.tarde.Domains.UsuarioDomain.Senha">
+            <summary>
+            Senha do usuário
+            </summary>
+        </member>
+        <member name="P:webapi.filmes.tarde.Domains.UsuarioDomain.Permissao">
+            <summary>
+            Permissão do usuário
+            </summary>
+        </member>
         <member name="T:webapi.filmes.tarde.Interfaces.IFilmeRepository">
             <summary>
             Interface responsável pelo repositório FilmeRepository
@@ -155,39 +210,31 @@
             <summary>
             Cadastra um filme
             </summary>
-            <param name="novoFilme"></param>
         </member>
         <member name="M:webapi.filmes.tarde.Interfaces.IFilmeRepository.ListarTodos">
             <summary>
             Lista todos os filmes
             </summary>
-            <returns></returns>
         </member>
         <member name="M:webapi.filmes.tarde.Interfaces.IFilmeRepository.BuscarPorId(System.Int32)">
             <summary>
             Busca um filme através do seu id
             </summary>
-            <param name="id"></param>
-            <returns></returns>
         </member>
         <member name="M:webapi.filmes.tarde.Interfaces.IFilmeRepository.AtualizarIdCorpo(webapi.filmes.tarde.Domains.FilmeDomain)">
             <summary>
             Atualiza um filme pelo corpo
             </summary>
-            <param name="filme"></param>
         </member>
         <member name="M:webapi.filmes.tarde.Interfaces.IFilmeRepository.AtualizarIdUrl(System.Int32,webapi.filmes.tarde.Domains.FilmeDomain)">
             <summary>
             Atualiza um filme pela url
             </summary>
-            <param name="id"></param>
-            <param name="filme"></param>
         </member>
         <member name="M:webapi.filmes.tarde.Interfaces.IFilmeRepository.Deletar(System.Int32)">
             <summary>
             Deleta um filme
             </summary>
-            <param name="id"></param>
         </member>
         <member name="T:webapi.filmes.tarde.Interfaces.IGeneroRepository">
             <summary>
@@ -232,6 +279,20 @@
             Deletar um gênero existente
             </summary>
             <param name="id"> Id do objeto a ser deletado </param>
+        </member>
+        <member name="T:webapi.filmes.tarde.Interfaces.IUsuarioRepository">
+            <summary>
+            Interface responsável pelo repositório UsuarioRepository
+            Define os métodos que serão implementados pelo repositório
+            </summary>
+        </member>
+        <member name="M:webapi.filmes.tarde.Interfaces.IUsuarioRepository.Login(System.String,System.String)">
+            <summary>
+            Método que busca um usuário por email e senha
+            </summary>
+            <param name="email"> Email do usuário </param>
+            <param name="senha"> Senha do usuário </param>
+            <returns> Objeto que foi buscado </returns>
         </member>
         <member name="T:webapi.filmes.tarde.Repositories.FilmeRepository">
             <summary>
@@ -336,6 +397,24 @@
             Listar todos os objetos do tipo gênero
             </summary>
             <returns> Lista de objetos do tipo gênero </returns>
+        </member>
+        <member name="T:webapi.filmes.tarde.Repositories.UsuarioRepository">
+            <summary>
+            Classe responsável pelo repositório dos usuários
+            </summary>
+        </member>
+        <member name="F:webapi.filmes.tarde.Repositories.UsuarioRepository.stringConection">
+            <summary>
+            String de conexão para acessar o BD
+            </summary>
+        </member>
+        <member name="M:webapi.filmes.tarde.Repositories.UsuarioRepository.Login(System.String,System.String)">
+            <summary>
+            Loga um usuário atavés de seu email e senha 
+            </summary>
+            <param name="email"> Email do usuário </param>
+            <param name="senha"> Senha do usuário </param>
+            <returns> Um usuário já cadastrado </returns>
         </member>
     </members>
 </doc>

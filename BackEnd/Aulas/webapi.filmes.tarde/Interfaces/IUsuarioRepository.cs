@@ -1,4 +1,5 @@
-﻿using webapi.filmes.tarde.Domains;
+﻿using Microsoft.AspNetCore.Identity;
+using webapi.filmes.tarde.Domains;
 
 namespace webapi.filmes.tarde.Interfaces
 {
@@ -9,23 +10,11 @@ namespace webapi.filmes.tarde.Interfaces
     public interface IUsuarioRepository
     {
         /// <summary>
-        /// Cadastra um usuário
+        /// Método que busca um usuário por email e senha
         /// </summary>
-        void Cadastrar(UsuarioDomain usuario);
-
-        /// <summary>
-        /// Bane usuários. Apenas administradores têm essa permissão
-        /// </summary>
-        void BanirUsuario(UsuarioDomain usuario);
-
-        /// <summary>
-        /// Loga um usuário já cadastrado
-        /// </summary>
-        void Login(UsuarioDomain usuario);
-
-        /// <summary>
-        /// Desloga um usuário que está logado
-        /// </summary>
-        void Logout(UsuarioDomain usuario);
+        /// <param name="email"> Email do usuário </param>
+        /// <param name="senha"> Senha do usuário </param>
+        /// <returns> Objeto que foi buscado </returns>
+        UsuarioDomain Login(string email, string senha);
     }
 }

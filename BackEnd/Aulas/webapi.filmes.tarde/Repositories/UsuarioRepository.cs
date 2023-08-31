@@ -14,66 +14,41 @@ namespace webapi.filmes.tarde.Repositories
         /// </summary>
         private string stringConection = "Data Source = NOTE23-S15; Initial Catalog = Filmes; User Id = sa; Pwd = Senai@134";
 
-        /// <summary>
-        /// Bane usuários (Apenas Admnistradores)
-        /// </summary>
-        public void BanirUsuario(UsuarioDomain usuario)
-        {
-            throw new NotImplementedException();
-        }
-
 
         /// <summary>
-        /// Cadastra novos usuários
+        /// Loga um usuário atavés de seu email e senha 
         /// </summary>
-        public void Cadastrar(UsuarioDomain usuario)
+        /// <param name="email"> Email do usuário </param>
+        /// <param name="senha"> Senha do usuário </param>
+        /// <returns> Um usuário já cadastrado </returns>
+        public UsuarioDomain Login(string email, string senha)
         {
             using (SqlConnection con = new SqlConnection(stringConection))
             {
-                string tipoUsuario;
-                bool permissao = false;
-
-                if (permissao == false)
-                {
-                    tipoUsuario = "Comum";
-                }
-                else
-                {
-                    tipoUsuario = "Administrador";
-                }
-
-                string queryAdd = $"INSERT INTO Usuario(Email, Senha, Permissao) VALUES (@Email, @Senha, {tipoUsuario})";
-
+                string queryLogin = "SELECT IdUsuario, Email, Permissao FROM Usuario WHERE Email = @Email AND Senha = @Senha";
 
                 con.Open();
 
-                using (SqlCommand cmd = new SqlCommand(queryAdd, con))
+                using (SqlCommand cmd = new SqlCommand(queryLogin, con))
                 {
-                    cmd.Parameters.AddWithValue("@Email", usuario.Email);
-                    cmd.Parameters.AddWithValue("@Senha", usuario.Senha);
+                    cmd.Parameters.AddWithValue("@Email", email);
+                    cmd.Parameters.AddWithValue("@Senha", senha);
 
-                    cmd.ExecuteNonQuery();
+                    SqlDataReader rdr = cmd.ExecuteReader();
 
+                    if(rdr.Read())
+                    {
+                        UsuarioDomain usuario = new UsuarioDomain()
+                        {
+                            IdUsuario = Convert.ToInt32(rdr["IdUsuario"]),
+                            Email = rdr["Email"].ToString(),
+                            Permissao = rdr["Permissao"].ToString()
+                        };
+                        return usuario;
+                    }
+                    return null!;
                 }
             }
-        }
-
-
-        /// <summary>
-        /// Loga um usuário
-        /// </summary>
-        public void Login(UsuarioDomain usuario)
-        {
-            throw new NotImplementedException();
-        }
-
-
-        /// <summary>
-        /// Desloga um usuário
-        /// </summary>
-        public void Logout(UsuarioDomain usuario)
-        {
-            throw new NotImplementedException();
         }
     }
 }
