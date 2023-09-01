@@ -127,12 +127,12 @@
             Construtor que instancia o objeto UsuarioRepository para que haja referência aos métodos do repositório
             </summary>
         </member>
-        <member name="M:webapi.filmes.tarde.Controllers.UsuarioController.Login(System.String,System.String)">
+        <member name="M:webapi.filmes.tarde.Controllers.UsuarioController.Login(webapi.filmes.tarde.Domains.UsuarioDomain)">
             <summary>
             Loga um usuário pelo seu email e senha
             </summary>
-            <param name="email"> Email a ser inserido </param>
-            <param name="senha"> Senha a ser inserida </param>
+            <param name="usuario.Email.Email"> Email a ser inserido </param>
+            <param name="usuario.Senha.Senha"> Senha a ser inserida </param>
             <returns> Um usuário </returns>
         </member>
         <member name="T:webapi.filmes.tarde.Domains.FilmeDomain">
