@@ -38,3 +38,11 @@ C:\Users\54454818835\Desktop\2SemSENAI\BackEnd\Aulas\webapi.filmes.tarde\bin\Deb
 C:\Users\54454818835\Desktop\2SemSENAI\BackEnd\Aulas\webapi.filmes.tarde\obj\Debug\net7.0\webapi.filmes.tarde.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\54454818835\Desktop\2SemSENAI\BackEnd\Aulas\webapi.filmes.tarde\bin\Debug\net7.0\webapi.filmes.tarde.xml
 C:\Users\54454818835\Desktop\2SemSENAI\BackEnd\Aulas\webapi.filmes.tarde\obj\Debug\net7.0\webapi.filmes.tarde.xml
+C:\Users\54454818835\Desktop\2SemSENAI\BackEnd\Aulas\webapi.filmes.tarde\bin\Debug\net7.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\54454818835\Desktop\2SemSENAI\BackEnd\Aulas\webapi.filmes.tarde\bin\Debug\net7.0\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\54454818835\Desktop\2SemSENAI\BackEnd\Aulas\webapi.filmes.tarde\bin\Debug\net7.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\54454818835\Desktop\2SemSENAI\BackEnd\Aulas\webapi.filmes.tarde\bin\Debug\net7.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\54454818835\Desktop\2SemSENAI\BackEnd\Aulas\webapi.filmes.tarde\bin\Debug\net7.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\54454818835\Desktop\2SemSENAI\BackEnd\Aulas\webapi.filmes.tarde\bin\Debug\net7.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\54454818835\Desktop\2SemSENAI\BackEnd\Aulas\webapi.filmes.tarde\bin\Debug\net7.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\54454818835\Desktop\2SemSENAI\BackEnd\Aulas\webapi.filmes.tarde\bin\Debug\net7.0\System.IdentityModel.Tokens.Jwt.dll

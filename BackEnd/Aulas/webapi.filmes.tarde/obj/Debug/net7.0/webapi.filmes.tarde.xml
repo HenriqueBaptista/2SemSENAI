@@ -131,9 +131,6 @@
             <summary>
             Loga um usuário pelo seu email e senha
             </summary>
-            <param name="usuario.Email.Email"> Email a ser inserido </param>
-            <param name="usuario.Senha.Senha"> Senha a ser inserida </param>
-            <returns> Um usuário </returns>
         </member>
         <member name="T:webapi.filmes.tarde.Domains.FilmeDomain">
             <summary>

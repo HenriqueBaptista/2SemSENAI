@@ -17,7 +17,7 @@ namespace webapi.filmes.tarde.Repositories
         ///     - Windows: Integrated Security = True
         ///     - SqlServer: User Id = sa; Pwd = Senha
         /// </summary>
-        private string StringConexao = "Data Source = NOTE23-S15; Initial Catalog = Filmes; User Id = sa; Pwd = Senai@134";
+        private string StringConexao = "Data Source = NOTE23-S15; Initial Catalog = FilmesTarde; User Id = sa; Pwd = Senai@134";
 
 
         /// <summary>

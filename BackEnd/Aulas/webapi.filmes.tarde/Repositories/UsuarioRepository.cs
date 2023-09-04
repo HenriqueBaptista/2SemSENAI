@@ -12,7 +12,7 @@ namespace webapi.filmes.tarde.Repositories
         /// <summary>
         /// String de conexão para acessar o BD
         /// </summary>
-        private string stringConection = "Data Source = NOTE23-S15; Initial Catalog = Filmes; User Id = sa; Pwd = Senai@134";
+        private string stringConection = "Data Source = NOTE23-S15; Initial Catalog = FilmesTarde; User Id = sa; Pwd = Senai@134";
 
 
         /// <summary>
