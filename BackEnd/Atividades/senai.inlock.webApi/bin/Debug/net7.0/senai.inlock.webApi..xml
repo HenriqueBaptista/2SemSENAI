@@ -1,0 +1,191 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>senai.inlock.webApi.</name>
+    </assembly>
+    <members>
+        <member name="T:senai.inlock.webApi_.Controllers.EstudioController">
+            <summary>
+            Controller responsável pelos endpoints do objeto Estudio
+            </summary>
+        </member>
+        <member name="M:senai.inlock.webApi_.Controllers.EstudioController.#ctor">
+            <summary>
+            Instância do objeto _estudioRepository para que haja referência aos métodos do repositório
+            </summary>
+        </member>
+        <member name="M:senai.inlock.webApi_.Controllers.EstudioController.Get">
+            <summary>
+            Endpoint que acessa o método ListarTodos
+            </summary>
+        </member>
+        <member name="M:senai.inlock.webApi_.Controllers.EstudioController.Post(senai.inlock.webApi_.Domains.EstudioDomain)">
+            <summary>
+            Endpoint que acessa o método Cadastrar
+            </summary>
+        </member>
+        <member name="M:senai.inlock.webApi_.Controllers.EstudioController.Delete(System.Int32)">
+            <summary>
+            Endpoint que acessa o método Deletar
+            </summary>
+        </member>
+        <member name="M:senai.inlock.webApi_.Controllers.EstudioController.Get(System.Int32)">
+            <summary>
+            Endpoint que acessa o método BuscarPorId
+            </summary>
+        </member>
+        <member name="T:senai.inlock.webApi_.Controllers.UsuarioController">
+            <summary>
+            Controller responsável pelos endpoints do objeto Usuario
+            </summary>
+        </member>
+        <member name="M:senai.inlock.webApi_.Controllers.UsuarioController.#ctor">
+            <summary>
+            Construtor
+            Instância do objeto _generoRepository para que haja referência aos métodos do repositório
+            </summary>
+        </member>
+        <member name="M:senai.inlock.webApi_.Controllers.UsuarioController.Login(senai.inlock.webApi_.Domains.UsuarioDomain)">
+            <summary>
+            Loga um usuário pelo seu email e senha
+            </summary>
+        </member>
+        <member name="T:senai.inlock.webApi_.Domains.EstudioDomain">
+            <summary>
+            Classe responsável pelas propriedades do Estúdio
+            </summary>
+        </member>
+        <member name="P:senai.inlock.webApi_.Domains.EstudioDomain.IdEstudio">
+            <summary>
+            Id do Estúdio
+            </summary>
+        </member>
+        <member name="P:senai.inlock.webApi_.Domains.EstudioDomain.Nome">
+            <summary>
+            Nome do estúdio
+            </summary>
+        </member>
+        <member name="T:senai.inlock.webApi_.Domains.UsuarioDomain">
+            <summary>
+            Classe responsável pelas propriedades do Usuário
+            </summary>
+        </member>
+        <member name="P:senai.inlock.webApi_.Domains.UsuarioDomain.IdUsuario">
+            <summary>
+            Id do usuário
+            </summary>
+        </member>
+        <member name="P:senai.inlock.webApi_.Domains.UsuarioDomain.Email">
+            <summary>
+            Email do usuário
+            </summary>
+        </member>
+        <member name="P:senai.inlock.webApi_.Domains.UsuarioDomain.Senha">
+            <summary>
+            Senha do usuário
+            </summary>
+        </member>
+        <member name="P:senai.inlock.webApi_.Domains.UsuarioDomain.TipoUsuario">
+            <summary>
+            Tipo de usuário - Cliente ou Administrador
+            </summary>
+        </member>
+        <member name="T:senai.inlock.webApi_.Interfaces.IEstudioRepository">
+            <summary>
+            Interface responsável pela classe EstudioRepository
+            </summary>
+        </member>
+        <member name="M:senai.inlock.webApi_.Interfaces.IEstudioRepository.Cadastrar(senai.inlock.webApi_.Domains.EstudioDomain)">
+            <summary>
+            Cadastra um novo Estudio
+            </summary>
+        </member>
+        <member name="M:senai.inlock.webApi_.Interfaces.IEstudioRepository.ListarTodos">
+            <summary>
+            Lista todos os estúdios já cadastrados
+            </summary>
+        </member>
+        <member name="M:senai.inlock.webApi_.Interfaces.IEstudioRepository.BuscarPorId(System.Int32)">
+            <summary>
+            Busca um estúdio cadastrado para fazer mudanças
+            </summary>
+        </member>
+        <member name="M:senai.inlock.webApi_.Interfaces.IEstudioRepository.AtualizarIdCorpo(senai.inlock.webApi_.Domains.EstudioDomain)">
+            <summary>
+            Atualiza informações pelo id/corpo do objeto
+            </summary>
+        </member>
+        <member name="M:senai.inlock.webApi_.Interfaces.IEstudioRepository.Deletar(System.Int32)">
+            <summary>
+            Deleta um estúdio já cadastrado
+            </summary>
+        </member>
+        <member name="T:senai.inlock.webApi_.Interfaces.IUsuarioRepository">
+            <summary>
+            Interface responsável pela classe UsuárioRepository
+            </summary>
+        </member>
+        <member name="M:senai.inlock.webApi_.Interfaces.IUsuarioRepository.Login(System.String,System.String)">
+            <summary>
+            Loga um usuário
+            </summary>
+            <param name="username"> Email do usuário </param>
+            <param name="password"> Senha do usuário </param>
+            <returns></returns>
+        </member>
+        <member name="T:senai.inlock.webApi_.Repositories.EstudioRepository">
+            <summary>
+            Repositório responsável pelos métodos do objeto Usuário
+            </summary>
+        </member>
+        <member name="F:senai.inlock.webApi_.Repositories.EstudioRepository.stringCon">
+            <summary>
+            String de conexão para acessar o BD
+            </summary>
+        </member>
+        <member name="M:senai.inlock.webApi_.Repositories.EstudioRepository.AtualizarIdCorpo(senai.inlock.webApi_.Domains.EstudioDomain)">
+            <summary>
+            Atualiza informações do Estúdio pelo id/corpo do objeto
+            </summary>
+        </member>
+        <member name="M:senai.inlock.webApi_.Repositories.EstudioRepository.BuscarPorId(System.Int32)">
+            <summary>
+            Busca um estúdio cadastrado para fazer mudanças
+            </summary>
+        </member>
+        <member name="M:senai.inlock.webApi_.Repositories.EstudioRepository.Cadastrar(senai.inlock.webApi_.Domains.EstudioDomain)">
+            <summary>
+            Cadastra um novo Estudio
+            </summary>
+        </member>
+        <member name="M:senai.inlock.webApi_.Repositories.EstudioRepository.Deletar(System.Int32)">
+            <summary>
+            Deleta um estúdio já cadastrado
+            </summary>
+        </member>
+        <member name="M:senai.inlock.webApi_.Repositories.EstudioRepository.ListarTodos">
+            <summary>
+            Lista todos os estúdios já cadastrados
+            </summary>
+        </member>
+        <member name="T:senai.inlock.webApi_.Repositories.UsuarioRepository">
+            <summary>
+            Repositório responsável pelos métodos do objeto Usuário
+            </summary>
+        </member>
+        <member name="F:senai.inlock.webApi_.Repositories.UsuarioRepository.stringCon">
+            <summary>
+            String de conexão para acessar o BD
+            </summary>
+        </member>
+        <member name="M:senai.inlock.webApi_.Repositories.UsuarioRepository.Login(System.String,System.String)">
+            <summary>
+            Loga o usuário
+            </summary>
+            <param name="email"> Email do usuário </param>
+            <param name="senha"> Senha do usuário </param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+    </members>
+</doc>

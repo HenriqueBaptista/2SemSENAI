@@ -68,6 +68,7 @@ namespace webapi.filmes.tarde.Controllers
         /// <param name="novoGenero"></param>
         /// <returns></returns>
         [HttpPost]
+        [Authorize(Roles = "Administrador")]
         public IActionResult Post(GeneroDomain novoGenero)
         {
             try
@@ -175,9 +176,6 @@ namespace webapi.filmes.tarde.Controllers
         /// <summary>
         /// Endpoint que acessa o método atualizar por url
         /// </summary>
-        /// <param name="genero"></param>
-        /// <param name="id"></param>
-        /// <returns></returns>
         [HttpPut("{id}")]
         public IActionResult PutByUrl(GeneroDomain genero, int id)
         {
