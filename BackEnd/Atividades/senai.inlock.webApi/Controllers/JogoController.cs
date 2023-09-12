@@ -9,22 +9,21 @@ using System.Data;
 namespace senai.inlock.webApi_.Controllers
 {
     /// <summary>
-    /// Controller responsável pelos endpoints do objeto Estudio
+    /// Controller responsável pelos endpoints do objeto Jogo
     /// </summary>
     [Route("api/[controller]")]
     [ApiController]
     [Produces("application/json")]
-    public class EstudioController : ControllerBase
+    public class JogoController : ControllerBase
     {
-        IEstudioRepository _estudioRepository { get; set; }
-
+        IJogoRepository? _jogoRepository { get; set; }
 
         /// <summary>
-        /// Instância do objeto _estudioRepository para que haja referência aos métodos do repositório
+        /// Construtor do controlador
         /// </summary>
-        public EstudioController()
+        public JogoController()
         {
-            _estudioRepository = new EstudioRepository();
+            _jogoRepository = new JogoRepository();
         }
 
 
@@ -37,15 +36,15 @@ namespace senai.inlock.webApi_.Controllers
         {
             try
             {
-                List<EstudioDomain> listaEstudios = _estudioRepository.ListarTodos();
+                List<JogoDomain> listaJogos = _jogoRepository!.ListarTodos();
 
-                return Ok(listaEstudios);
+                return Ok(listaJogos);
             }
             catch (Exception erro)
             {
                 return BadRequest(erro.Message);
             }
-        } // Completo
+        } // Complete
 
 
         /// <summary>
@@ -53,11 +52,11 @@ namespace senai.inlock.webApi_.Controllers
         /// </summary>
         [HttpPost]
         [Authorize(Roles = "Administrador")]
-        public IActionResult Post(EstudioDomain novoEstudio)
+        public IActionResult Post(JogoDomain novoJogo)
         {
             try
             {
-                _estudioRepository!.Cadastrar(novoEstudio);
+                _jogoRepository!.Cadastrar(novoJogo);
 
                 return StatusCode(201);
             }
@@ -75,42 +74,50 @@ namespace senai.inlock.webApi_.Controllers
         [Authorize(Roles = "Administrador")]
         public IActionResult Delete(int id)
         {
-            try
-            {
-                _estudioRepository!.Deletar(id);
+            JogoDomain jogoExistente = _jogoRepository!.BuscarPorId(id);
 
-                return StatusCode(204);
-            }
-            catch (Exception erro)
+            if (jogoExistente != null)
             {
-                return BadRequest(erro.Message);
+                try
+                {
+                    _jogoRepository!.Deletar(id);
+
+                    return StatusCode(204);
+                }
+                catch (Exception erro)
+                {
+                    return BadRequest(erro.Message);
+                }
             }
-        } // Completo
+
+            return NotFound("Jogo não cadastrado");
+        }
 
 
         /// <summary>
         /// Endpoint que acessa o método BuscarPorId
         /// </summary>
         [HttpGet("{id}")]
-        [Authorize(Roles = "Administrador")]
+        [Authorize]
+
         public IActionResult Get(int id)
         {
             try
             {
-                EstudioDomain estudioBuscado = _estudioRepository.BuscarPorId(id);
+                JogoDomain jogoBuscado = _jogoRepository!.BuscarPorId(id);
 
-                if (estudioBuscado == null)
+                if (jogoBuscado == null)
                 {
-                    return NotFound("Estúdio não existente ou não cadastrado");
+                    return NotFound("Jogo não cadastrado");
                 }
 
-                return Ok(estudioBuscado);
+                return Ok(jogoBuscado);
             }
             catch (Exception erro)
             {
                 return BadRequest(erro.Message);
             }
-        } // Completo
+        }
 
 
         /// <summary>
@@ -118,17 +125,17 @@ namespace senai.inlock.webApi_.Controllers
         /// </summary>
         [HttpPut]
         [Authorize(Roles = "Administrador")]
-        public IActionResult Put(EstudioDomain estudio)
+        public IActionResult Put(JogoDomain jogo)
         {
             try
             {
-                EstudioDomain estudioBuscado = _estudioRepository.BuscarPorId(estudio.IdEstudio);
+                JogoDomain jogoBuscado = _jogoRepository!.BuscarPorId(jogo.IdJogo);
 
-                if (estudioBuscado != null)
+                if (jogoBuscado != null)
                 {
                     try
                     {
-                        _estudioRepository.AtualizarIdCorpo(estudio);
+                        _jogoRepository!.Atualizar(jogo);
 
                         return NoContent();
                     }
@@ -138,12 +145,12 @@ namespace senai.inlock.webApi_.Controllers
                     }
                 }
 
-                return NotFound("Estúdio não encontrado");
+                return NotFound("Jogo não encontrado");
             }
             catch (Exception erro)
             {
                 return BadRequest(erro.Message);
             }
-        } // Completo
+        }
     }
 }

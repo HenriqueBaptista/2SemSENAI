@@ -15,6 +15,6 @@ namespace senai.inlock.webApi_.Domains
         /// <summary>
         /// Nome do estúdio
         /// </summary>
-        [Required] public string? Nome { get; set; }
+        [Required(ErrorMessage = "O nome do estúdio é obrigatório!")] public string? Nome { get; set; }
     }
 }
