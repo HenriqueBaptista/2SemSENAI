@@ -1,0 +1,516 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>webapi.event+.tarde</name>
+    </assembly>
+    <members>
+        <member name="T:webapi.event_.tarde.Contexts.EventContext">
+            <summary>
+            Classe responsável pelo contexto de Event +
+            </summary>
+        </member>
+        <member name="P:webapi.event_.tarde.Contexts.EventContext.TipoUsuario">
+            <summary>
+            TipoUsuario
+            </summary>
+        </member>
+        <member name="P:webapi.event_.tarde.Contexts.EventContext.Usuario">
+            <summary>
+            Usuario
+            </summary>
+        </member>
+        <member name="P:webapi.event_.tarde.Contexts.EventContext.TipoEvento">
+            <summary>
+            TipoEvento
+            </summary>
+        </member>
+        <member name="P:webapi.event_.tarde.Contexts.EventContext.Evento">
+            <summary>
+            Evento
+            </summary>
+        </member>
+        <member name="P:webapi.event_.tarde.Contexts.EventContext.ComentarioEvento">
+            <summary>
+            ComentarioEvento
+            </summary>
+        </member>
+        <member name="P:webapi.event_.tarde.Contexts.EventContext.Instituicao">
+            <summary>
+            Instituicao
+            </summary>
+        </member>
+        <member name="P:webapi.event_.tarde.Contexts.EventContext.PresencaEvento">
+            <summary>
+            PresencaEvento
+            </summary>
+        </member>
+        <member name="M:webapi.event_.tarde.Contexts.EventContext.OnConfiguring(Microsoft.EntityFrameworkCore.DbContextOptionsBuilder)">
+            <summary>
+            Acesso ao banco de dados
+            </summary>
+        </member>
+        <member name="T:webapi.event_.tarde.Controllers.LoginController">
+            <summary>
+            Controller que acessa os endpoints de Login
+            </summary>
+        </member>
+        <member name="F:webapi.event_.tarde.Controllers.LoginController._usuarioRepository">
+            <summary>
+            Chamada da interface IUsuarioRepository
+            </summary>
+        </member>
+        <member name="M:webapi.event_.tarde.Controllers.LoginController.#ctor">
+            <summary>
+            Construtor do controller, chama o UsuarioRepository
+            </summary>
+        </member>
+        <member name="M:webapi.event_.tarde.Controllers.LoginController.Login(webapi.event_.tarde.ViewModels.LoginViewModel)">
+            <summary>
+            Loga um usuário
+            </summary>
+        </member>
+        <member name="T:webapi.event_.tarde.Controllers.TipoUsuarioController">
+            <summary>
+            Controller responsável pelos endpoints de TipoUsuario
+            </summary>
+        </member>
+        <member name="P:webapi.event_.tarde.Controllers.TipoUsuarioController._tipoUsuarioRepository">
+            <summary>
+            Chamada da interface de TipoUsuario
+            </summary>
+        </member>
+        <member name="M:webapi.event_.tarde.Controllers.TipoUsuarioController.#ctor">
+            <summary>
+            Construtor do controller - chama o repositório de TipoUsuario
+            </summary>
+        </member>
+        <member name="M:webapi.event_.tarde.Controllers.TipoUsuarioController.Post(webapi.event_.tarde.Domains.TipoUsuario)">
+            <summary>
+            Endpoint que acessa o método Cadastrar
+            </summary>
+        </member>
+        <member name="T:webapi.event_.tarde.Controllers.UsuarioController">
+            <summary>
+            Controller responsável pelos endpoints de Usuario
+            </summary>
+        </member>
+        <member name="F:webapi.event_.tarde.Controllers.UsuarioController._usuarioRepository">
+            <summary>
+            Chamada da interface IUsuarioRepository
+            </summary>
+        </member>
+        <member name="M:webapi.event_.tarde.Controllers.UsuarioController.#ctor">
+            <summary>
+            Construtor do controller - chama o repositório de Usuario
+            </summary>
+        </member>
+        <member name="M:webapi.event_.tarde.Controllers.UsuarioController.Post(webapi.event_.tarde.Domains.Usuario)">
+            <summary>
+            Endpoint que acessa o método Cadastrar
+            </summary>
+        </member>
+        <member name="T:webapi.event_.tarde.Controllers.WeatherForecastController">
+            <summary>
+            C# Class responsible for the WeatherForecast endpoints
+            </summary>
+        </member>
+        <member name="M:webapi.event_.tarde.Controllers.WeatherForecastController.#ctor(Microsoft.Extensions.Logging.ILogger{webapi.event_.tarde.Controllers.WeatherForecastController})">
+            <summary>
+            Constructor of this Controller
+            </summary>
+        </member>
+        <member name="M:webapi.event_.tarde.Controllers.WeatherForecastController.Get">
+            <summary>
+            Get endpoint
+            </summary>
+        </member>
+        <member name="T:webapi.event_.tarde.Domains.ComentarioEvento">
+            <summary>
+            Classe responsável pela tabela ComentarioEvento
+            </summary>
+        </member>
+        <member name="P:webapi.event_.tarde.Domains.ComentarioEvento.IdComentarioEvento">
+            <summary>
+            Primary Key da tabela
+            </summary>
+        </member>
+        <member name="P:webapi.event_.tarde.Domains.ComentarioEvento.Descricao">
+            <summary>
+            Descrição do comentário
+            </summary>
+        </member>
+        <member name="P:webapi.event_.tarde.Domains.ComentarioEvento.Exibe">
+            <summary>
+            Indica se o comentário é exibível ou não
+            </summary>
+        </member>
+        <member name="P:webapi.event_.tarde.Domains.ComentarioEvento.IdUsuario">
+            <summary>
+            Id do Usuário responsável pelo comentário
+            </summary>
+        </member>
+        <member name="P:webapi.event_.tarde.Domains.ComentarioEvento.Usuario">
+            <summary>
+            Foreign Key para usar Usuario
+            </summary>
+        </member>
+        <member name="P:webapi.event_.tarde.Domains.ComentarioEvento.IdEvento">
+            <summary>
+            Id do evento que receberá o comentário
+            </summary>
+        </member>
+        <member name="P:webapi.event_.tarde.Domains.ComentarioEvento.Evento">
+            <summary>
+            Foreign Key para usar Evento
+            </summary>
+        </member>
+        <member name="T:webapi.event_.tarde.Domains.Evento">
+            <summary>
+            Classe responsável pela tabela Evento
+            </summary>
+        </member>
+        <member name="P:webapi.event_.tarde.Domains.Evento.IdEvento">
+            <summary>
+            Primary key da tabela
+            </summary>
+        </member>
+        <member name="P:webapi.event_.tarde.Domains.Evento.DataEvento">
+            <summary>
+            Data do evento
+            </summary>
+        </member>
+        <member name="P:webapi.event_.tarde.Domains.Evento.NomeEvento">
+            <summary>
+            Nome do evento
+            </summary>
+        </member>
+        <member name="P:webapi.event_.tarde.Domains.Evento.Descricao">
+            <summary>
+            Descrição do evento
+            </summary>
+        </member>
+        <member name="P:webapi.event_.tarde.Domains.Evento.IdTipoEvento">
+            <summary>
+            Id do tipo do evento
+            </summary>
+        </member>
+        <member name="P:webapi.event_.tarde.Domains.Evento.TipoEvento">
+            <summary>
+            Foreign Key para usar TipoEvento
+            </summary>
+        </member>
+        <member name="P:webapi.event_.tarde.Domains.Evento.IdInstituicao">
+            <summary>
+            Id da instituição
+            </summary>
+        </member>
+        <member name="P:webapi.event_.tarde.Domains.Evento.Instituicao">
+            <summary>
+            Foreign Key para usar Instituição
+            </summary>
+        </member>
+        <member name="T:webapi.event_.tarde.Domains.Instituicao">
+            <summary>
+            Classe responsável pela tabela Instituicao
+            </summary>
+        </member>
+        <member name="P:webapi.event_.tarde.Domains.Instituicao.IdInstituicao">
+            <summary>
+            Primary Key da tabela
+            </summary>
+        </member>
+        <member name="P:webapi.event_.tarde.Domains.Instituicao.CNPJ">
+            <summary>
+            CNPJ da instituição
+            </summary>
+        </member>
+        <member name="P:webapi.event_.tarde.Domains.Instituicao.Endereco">
+            <summary>
+            Endereço da instituição
+            </summary>
+        </member>
+        <member name="P:webapi.event_.tarde.Domains.Instituicao.NomeFantasia">
+            <summary>
+            Nome fantasia da instituição
+            </summary>
+        </member>
+        <member name="T:webapi.event_.tarde.Domains.PresencaEvento">
+            <summary>
+            Classe responsável pela tabela PresencaEvento
+            </summary>
+        </member>
+        <member name="P:webapi.event_.tarde.Domains.PresencaEvento.IdPresencaEvento">
+            <summary>
+            Primary Key da tabela
+            </summary>
+        </member>
+        <member name="P:webapi.event_.tarde.Domains.PresencaEvento.Situacao">
+            <summary>
+            Situação da presença - Presente (true) ou Ausente (false)
+            </summary>
+        </member>
+        <member name="P:webapi.event_.tarde.Domains.PresencaEvento.IdUsuario">
+            <summary>
+            Id do usuário
+            </summary>
+        </member>
+        <member name="P:webapi.event_.tarde.Domains.PresencaEvento.Usuario">
+            <summary>
+            Foreign Key para usar Usuario
+            </summary>
+        </member>
+        <member name="P:webapi.event_.tarde.Domains.PresencaEvento.IdEvento">
+            <summary>
+            Id do evento
+            </summary>
+        </member>
+        <member name="P:webapi.event_.tarde.Domains.PresencaEvento.Evento">
+            <summary>
+            Foreign Key para usar Evento
+            </summary>
+        </member>
+        <member name="T:webapi.event_.tarde.Domains.TipoEvento">
+            <summary>
+            Classe responsável pela tabela TipoEvento
+            </summary>
+        </member>
+        <member name="P:webapi.event_.tarde.Domains.TipoEvento.IdTipoEvento">
+            <summary>
+            Primary Key da tabela
+            </summary>
+        </member>
+        <member name="P:webapi.event_.tarde.Domains.TipoEvento.Titulo">
+            <summary>
+            Titulo do tipo evento
+            </summary>
+        </member>
+        <member name="T:webapi.event_.tarde.Domains.TipoUsuario">
+            <summary>
+            Classe responsável pela tabela TipoUsuario
+            </summary>
+        </member>
+        <member name="P:webapi.event_.tarde.Domains.TipoUsuario.IdTipoUsuario">
+            <summary>
+            Primary Key da tabela
+            </summary>
+        </member>
+        <member name="P:webapi.event_.tarde.Domains.TipoUsuario.Titulo">
+            <summary>
+            Titulo do tipo de usuário
+            </summary>
+        </member>
+        <member name="T:webapi.event_.tarde.Domains.Usuario">
+            <summary>
+            Classe responsável pela tabela Usuario
+            </summary>
+        </member>
+        <member name="P:webapi.event_.tarde.Domains.Usuario.IdUsuario">
+            <summary>
+            Primary Key da tabela
+            </summary>
+        </member>
+        <member name="P:webapi.event_.tarde.Domains.Usuario.Nome">
+            <summary>
+            Nome do usuário
+            </summary>
+        </member>
+        <member name="P:webapi.event_.tarde.Domains.Usuario.Email">
+            <summary>
+            Email do usuário
+            </summary>
+        </member>
+        <member name="P:webapi.event_.tarde.Domains.Usuario.Senha">
+            <summary>
+            Senha do usuário
+            </summary>
+        </member>
+        <member name="P:webapi.event_.tarde.Domains.Usuario.IdTipoUsuario">
+            <summary>
+            Id do tipo de usuário
+            </summary>
+        </member>
+        <member name="P:webapi.event_.tarde.Domains.Usuario.TipoUsuario">
+            <summary>
+            Foreign Key para usar TipoUsuario
+            </summary>
+        </member>
+        <member name="T:webapi.event_.tarde.Interfaces.ITipoUsuarioRepository">
+            <summary>
+            Interface responsável pelo TipoUsuarioRepository
+            </summary>
+        </member>
+        <member name="M:webapi.event_.tarde.Interfaces.ITipoUsuarioRepository.Cadastrar(webapi.event_.tarde.Domains.TipoUsuario)">
+            <summary>
+            Cadastra um tipo de usuário
+            </summary>
+        </member>
+        <member name="M:webapi.event_.tarde.Interfaces.ITipoUsuarioRepository.Deletar(System.Guid)">
+            <summary>
+            Deleta um tipo de usuário
+            </summary>
+        </member>
+        <member name="M:webapi.event_.tarde.Interfaces.ITipoUsuarioRepository.Listar">
+            <summary>
+            Lista os tipos de usuário
+            </summary>
+        </member>
+        <member name="M:webapi.event_.tarde.Interfaces.ITipoUsuarioRepository.BuscarPorId(System.Guid)">
+            <summary>
+            Busca/seleciona um tipo de usuário
+            </summary>
+        </member>
+        <member name="M:webapi.event_.tarde.Interfaces.ITipoUsuarioRepository.Atualizar(System.Guid,webapi.event_.tarde.Domains.TipoUsuario)">
+            <summary>
+            Atualiza um tipo de usuário
+            </summary>
+        </member>
+        <member name="T:webapi.event_.tarde.Interfaces.IUsuarioRepository">
+            <summary>
+            Interface responsável pelo UsuarioRepository
+            </summary>
+        </member>
+        <member name="M:webapi.event_.tarde.Interfaces.IUsuarioRepository.Cadastrar(webapi.event_.tarde.Domains.Usuario)">
+            <summary>
+            Cadastra usuários
+            </summary>
+        </member>
+        <member name="M:webapi.event_.tarde.Interfaces.IUsuarioRepository.BuscarPorId(System.Guid)">
+            <summary>
+            Busca usuários pelos Ids
+            </summary>
+        </member>
+        <member name="M:webapi.event_.tarde.Interfaces.IUsuarioRepository.BuscarPorEmailESenha(System.String,System.String)">
+            <summary>
+            Busca usuários pelo email e senha
+            </summary>
+        </member>
+        <member name="T:webapi.event_.tarde.Migrations.DB">
+            <inheritdoc />
+        </member>
+        <member name="M:webapi.event_.tarde.Migrations.DB.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:webapi.event_.tarde.Migrations.DB.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:webapi.event_.tarde.Migrations.DB.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:webapi.event_.tarde.Repositories.TipoUsuarioRepository">
+            <summary>
+            Repositório responsável pelos métodos de TipoUsuario
+            </summary>
+        </member>
+        <member name="F:webapi.event_.tarde.Repositories.TipoUsuarioRepository._eventContext">
+            <summary>
+            Acesso a context
+            </summary>
+        </member>
+        <member name="M:webapi.event_.tarde.Repositories.TipoUsuarioRepository.#ctor">
+            <summary>
+            Construtor para obtenção do acesso a context
+            </summary>
+        </member>
+        <member name="M:webapi.event_.tarde.Repositories.TipoUsuarioRepository.Atualizar(System.Guid,webapi.event_.tarde.Domains.TipoUsuario)">
+            <summary>
+            Atualiza tipos de usuário
+            </summary>
+        </member>
+        <member name="M:webapi.event_.tarde.Repositories.TipoUsuarioRepository.BuscarPorId(System.Guid)">
+            <summary>
+            Busca usuários
+            </summary>
+        </member>
+        <member name="M:webapi.event_.tarde.Repositories.TipoUsuarioRepository.Cadastrar(webapi.event_.tarde.Domains.TipoUsuario)">
+            <summary>
+            Cadastra um tipo de usuário
+            </summary>
+        </member>
+        <member name="M:webapi.event_.tarde.Repositories.TipoUsuarioRepository.Deletar(System.Guid)">
+            <summary>
+            Deleta um tipo de usuário
+            </summary>
+        </member>
+        <member name="M:webapi.event_.tarde.Repositories.TipoUsuarioRepository.Listar">
+            <summary>
+            Lista os tipos de usuário
+            </summary>
+        </member>
+        <member name="T:webapi.event_.tarde.Repositories.UsuarioRepository">
+            <summary>
+            Repositório responsável pelos métodos de Usuario
+            </summary>
+        </member>
+        <member name="M:webapi.event_.tarde.Repositories.UsuarioRepository.BuscarPorEmailESenha(System.String,System.String)">
+            <summary>
+            Busca usuários pelo email e senha
+            </summary>
+        </member>
+        <member name="M:webapi.event_.tarde.Repositories.UsuarioRepository.BuscarPorId(System.Guid)">
+            <summary>
+            Busca usuários pelo Id
+            </summary>
+        </member>
+        <member name="M:webapi.event_.tarde.Repositories.UsuarioRepository.Cadastrar(webapi.event_.tarde.Domains.Usuario)">
+            <summary>
+            Cadastra usuários
+            </summary>
+        </member>
+        <member name="T:webapi.event_.tarde.Utils.Criptografia">
+            <summary>
+            Classe responsável pela criptografia
+            </summary>
+        </member>
+        <member name="M:webapi.event_.tarde.Utils.Criptografia.GerarHash(System.String)">
+            <summary>
+            Gera a hash para a criptografia
+            </summary>
+        </member>
+        <member name="M:webapi.event_.tarde.Utils.Criptografia.CompararHash(System.String,System.String)">
+            <summary>
+            Compara as hashs, tanto a original quanto a da senha
+            </summary>
+        </member>
+        <member name="T:webapi.event_.tarde.ViewModels.LoginViewModel">
+            <summary>
+            ViewModel resposável pela classe Usuário.
+            Nesta ViewModel, só é para conter Email e Senha do Usuário
+            </summary>
+        </member>
+        <member name="P:webapi.event_.tarde.ViewModels.LoginViewModel.Email">
+            <summary>
+            Email do usuário
+            </summary>
+        </member>
+        <member name="P:webapi.event_.tarde.ViewModels.LoginViewModel.Senha">
+            <summary>
+            Senha do usuário
+            </summary>
+        </member>
+        <member name="T:webapi.event_.tarde.WeatherForecast">
+            <summary>
+            Class responsible for WheaterForecast object 
+            </summary>
+        </member>
+        <member name="P:webapi.event_.tarde.WeatherForecast.Date">
+            <summary>
+            Date
+            </summary>
+        </member>
+        <member name="P:webapi.event_.tarde.WeatherForecast.TemperatureC">
+            <summary>
+            Temperacture by Celcius
+            </summary>
+        </member>
+        <member name="P:webapi.event_.tarde.WeatherForecast.TemperatureF">
+            <summary>
+            Temperature by Farenheight
+            </summary>
+        </member>
+        <member name="P:webapi.event_.tarde.WeatherForecast.Summary">
+            <summary>
+            Sumary
+            </summary>
+        </member>
+    </members>
+</doc>

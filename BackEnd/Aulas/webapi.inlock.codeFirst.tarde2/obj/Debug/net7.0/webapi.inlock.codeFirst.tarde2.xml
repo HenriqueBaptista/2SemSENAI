@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>webapi.inlock.codeFirst.tarde2</name>
+    </assembly>
+    <members>
+        <member name="P:webapi.inlock.CodeFirst_Tarde.Contexts.InlockContext.TiposUsuario">
+            <summary>
+            Definição das entidades do banco de dados
+            </summary>
+        </member>
+        <member name="T:webapi.inlock.codeFirst.tarde2.Migrations.DB">
+            <inheritdoc />
+        </member>
+        <member name="M:webapi.inlock.codeFirst.tarde2.Migrations.DB.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:webapi.inlock.codeFirst.tarde2.Migrations.DB.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:webapi.inlock.codeFirst.tarde2.Migrations.DB.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+    </members>
+</doc>
