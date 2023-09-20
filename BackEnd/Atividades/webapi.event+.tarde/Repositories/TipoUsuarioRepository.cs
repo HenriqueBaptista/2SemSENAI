@@ -23,12 +23,30 @@ namespace webapi.event_.tarde.Repositories
         }
 
 
+
         /// <summary>
         /// Atualiza tipos de usuário
         /// </summary>
         public void Atualizar(Guid id, TipoUsuario tipoUsuario)
         {
-            throw new NotImplementedException();
+            try
+            {
+                TipoUsuario tipoUsuarioAtualizar = _eventContext.Usuario.Select(tu => new TipoUsuario
+                {
+                    IdTipoUsuario = tu.IdTipoUsuario,
+                    Titulo = tu.TipoUsuario!.Titulo
+                }).FirstOrDefault(tu => tu.IdTipoUsuario == id)!;
+
+                tipoUsuarioAtualizar = tipoUsuario;
+
+                _eventContext.TipoUsuario.Update(tipoUsuario);
+
+                _eventContext.SaveChanges();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
 
@@ -37,7 +55,20 @@ namespace webapi.event_.tarde.Repositories
         /// </summary>
         public TipoUsuario BuscarPorId(Guid id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                TipoUsuario tipoUsuarioBuscado = _eventContext.TipoUsuario.Select(tu => new TipoUsuario
+                {
+                    IdTipoUsuario = tu.IdTipoUsuario,
+                    Titulo = tu.Titulo
+                }).FirstOrDefault(tu => tu.IdTipoUsuario == id)!;
+
+                return tipoUsuarioBuscado;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
 
@@ -64,7 +95,13 @@ namespace webapi.event_.tarde.Repositories
         /// </summary>
         public void Deletar(Guid id)
         {
-            throw new NotImplementedException();
+            TipoUsuario tipoUsuarioBuscado = new TipoUsuario();
+
+            tipoUsuarioBuscado.IdTipoUsuario = id;
+
+            _eventContext.Remove(tipoUsuarioBuscado);
+
+            _eventContext.SaveChanges();
         }
 
 
@@ -73,7 +110,11 @@ namespace webapi.event_.tarde.Repositories
         /// </summary>
         public List<TipoUsuario> Listar()
         {
-            throw new NotImplementedException();
+            return _eventContext.TipoUsuario.Select(tu => new TipoUsuario
+            {
+                IdTipoUsuario = tu.IdTipoUsuario,
+                Titulo = tu.Titulo
+            }).ToList();
         }
     }
-}
+} // Complete

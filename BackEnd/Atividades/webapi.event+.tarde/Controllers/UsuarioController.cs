@@ -38,7 +38,45 @@ namespace webapi.event_.tarde.Controllers
             {
                 _usuarioRepository.Cadastrar(usuario);
 
-                return StatusCode(201);
+                return StatusCode(201, "Usuário cadastrado!");
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
+
+
+        /// <summary>
+        /// Endpoint que acessa o método BuscarPorId
+        /// </summary>
+        [HttpGet("{id}")]
+        public IActionResult GetById(Guid id)
+        {
+            try
+            {
+                Usuario UsuarioBuscado = _usuarioRepository.BuscarPorId(id);
+
+                return Ok(UsuarioBuscado);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
+
+
+        /// <summary>
+        /// Endpoint que acessa o método Delete
+        /// </summary>
+        [HttpDelete("{id}")]
+        public IActionResult Delete(Guid id)
+        {
+            try
+            {
+                _usuarioRepository.Deletar(id);
+
+                return StatusCode(204);
             }
             catch (Exception e)
             {

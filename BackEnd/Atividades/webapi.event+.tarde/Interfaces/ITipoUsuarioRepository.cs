@@ -36,4 +36,4 @@ namespace webapi.event_.tarde.Interfaces
         /// </summary>
         void Atualizar(Guid id, TipoUsuario tipoUsuario);
     }
-}
+} // Complete

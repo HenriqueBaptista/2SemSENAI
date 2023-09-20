@@ -34,7 +34,13 @@ namespace webapi.event_.tarde.Interfaces
         /// <summary>
         /// Deleta usuários
         /// </summary>
-        /// <param name="id"></param>
         void Deletar(Guid id);
+
+
+        /// <summary>
+        /// Lista usuários
+        /// </summary>
+        /// <returns></returns>
+        List<Usuario> Listar();
     }
 }

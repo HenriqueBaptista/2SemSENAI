@@ -38,7 +38,82 @@ namespace webapi.event_.tarde.Controllers
             {
                 _tipoUsuarioRepository.Cadastrar(tipoUsuario);
 
-                return StatusCode(201);
+                return StatusCode(201, "Tipo de usuário criado com sucesso!");
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
+
+
+        /// <summary>
+        /// Endpoint que acessa o método BuscarPorId
+        /// </summary>
+        [HttpGet ("{id}")]
+        public IActionResult GetById(Guid id)
+        {
+            try
+            {
+                TipoUsuario tipoUsuarioBuscado = _tipoUsuarioRepository.BuscarPorId(id);
+
+                return Ok(tipoUsuarioBuscado);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
+
+
+        /// <summary>
+        /// Endpoint que acessa o método Listar
+        /// </summary>
+        [HttpGet]
+        public IActionResult Get()
+        {
+            try
+            {
+                return Ok(_tipoUsuarioRepository.Listar());
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
+
+
+        /// <summary>
+        /// Endpoint que acessa o método Delete
+        /// </summary>
+        [HttpDelete ("{id}")]
+        public IActionResult Delete(Guid id)
+        {
+            try
+            {
+                _tipoUsuarioRepository.Deletar(id);
+
+                return StatusCode(204);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
+
+
+        /// <summary>
+        /// Endpoint que acessa o método Atualizar
+        /// </summary>
+        /// <returns></returns>
+        [HttpPut]
+        public IActionResult Put(TipoUsuario tipoUsuario)
+        {
+            try
+            {
+                _tipoUsuarioRepository.Atualizar(tipoUsuario.IdTipoUsuario, tipoUsuario);
+
+                return StatusCode(200, "Tipo de usuário atualizado");
             }
             catch (Exception e)
             {
@@ -46,4 +121,4 @@ namespace webapi.event_.tarde.Controllers
             }
         }
     }
-}
+} // Complete

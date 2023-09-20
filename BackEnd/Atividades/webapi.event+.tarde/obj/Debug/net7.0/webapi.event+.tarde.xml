@@ -89,6 +89,27 @@
             Endpoint que acessa o método Cadastrar
             </summary>
         </member>
+        <member name="M:webapi.event_.tarde.Controllers.TipoUsuarioController.GetById(System.Guid)">
+            <summary>
+            Endpoint que acessa o método BuscarPorId
+            </summary>
+        </member>
+        <member name="M:webapi.event_.tarde.Controllers.TipoUsuarioController.Get">
+            <summary>
+            Endpoint que acessa o método Listar
+            </summary>
+        </member>
+        <member name="M:webapi.event_.tarde.Controllers.TipoUsuarioController.Delete(System.Guid)">
+            <summary>
+            Endpoint que acessa o método Delete
+            </summary>
+        </member>
+        <member name="M:webapi.event_.tarde.Controllers.TipoUsuarioController.Put(webapi.event_.tarde.Domains.TipoUsuario)">
+            <summary>
+            Endpoint que acessa o método Atualizar
+            </summary>
+            <returns></returns>
+        </member>
         <member name="T:webapi.event_.tarde.Controllers.UsuarioController">
             <summary>
             Controller responsável pelos endpoints de Usuario
@@ -109,19 +130,14 @@
             Endpoint que acessa o método Cadastrar
             </summary>
         </member>
-        <member name="T:webapi.event_.tarde.Controllers.WeatherForecastController">
+        <member name="M:webapi.event_.tarde.Controllers.UsuarioController.GetById(System.Guid)">
             <summary>
-            C# Class responsible for the WeatherForecast endpoints
+            Endpoint que acessa o método BuscarPorId
             </summary>
         </member>
-        <member name="M:webapi.event_.tarde.Controllers.WeatherForecastController.#ctor(Microsoft.Extensions.Logging.ILogger{webapi.event_.tarde.Controllers.WeatherForecastController})">
+        <member name="M:webapi.event_.tarde.Controllers.UsuarioController.Delete(System.Guid)">
             <summary>
-            Constructor of this Controller
-            </summary>
-        </member>
-        <member name="M:webapi.event_.tarde.Controllers.WeatherForecastController.Get">
-            <summary>
-            Get endpoint
+            Endpoint que acessa o método Delete
             </summary>
         </member>
         <member name="T:webapi.event_.tarde.Domains.ComentarioEvento">
@@ -384,6 +400,16 @@
             Busca usuários pelo email e senha
             </summary>
         </member>
+        <member name="M:webapi.event_.tarde.Interfaces.IUsuarioRepository.Atualizar(webapi.event_.tarde.Domains.Usuario)">
+            <summary>
+            Atualiza usuários
+            </summary>
+        </member>
+        <member name="M:webapi.event_.tarde.Interfaces.IUsuarioRepository.Deletar(System.Guid)">
+            <summary>
+            Deleta usuários
+            </summary>
+        </member>
         <member name="T:webapi.event_.tarde.Migrations.DB">
             <inheritdoc />
         </member>
@@ -441,6 +467,21 @@
             Repositório responsável pelos métodos de Usuario
             </summary>
         </member>
+        <member name="F:webapi.event_.tarde.Repositories.UsuarioRepository._eventContext">
+            <summary>
+            Chamada do EventContext
+            </summary>
+        </member>
+        <member name="M:webapi.event_.tarde.Repositories.UsuarioRepository.#ctor">
+            <summary>
+            Construtor do repositório - chama o EventContext
+            </summary>
+        </member>
+        <member name="M:webapi.event_.tarde.Repositories.UsuarioRepository.Atualizar(webapi.event_.tarde.Domains.Usuario)">
+            <summary>
+            Atualiza o usuário
+            </summary>
+        </member>
         <member name="M:webapi.event_.tarde.Repositories.UsuarioRepository.BuscarPorEmailESenha(System.String,System.String)">
             <summary>
             Busca usuários pelo email e senha
@@ -454,6 +495,11 @@
         <member name="M:webapi.event_.tarde.Repositories.UsuarioRepository.Cadastrar(webapi.event_.tarde.Domains.Usuario)">
             <summary>
             Cadastra usuários
+            </summary>
+        </member>
+        <member name="M:webapi.event_.tarde.Repositories.UsuarioRepository.Deletar(System.Guid)">
+            <summary>
+            Deleta usuários
             </summary>
         </member>
         <member name="T:webapi.event_.tarde.Utils.Criptografia">

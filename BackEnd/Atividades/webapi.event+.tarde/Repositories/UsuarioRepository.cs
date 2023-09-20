@@ -40,7 +40,20 @@ namespace webapi.event_.tarde.Repositories
         {
             try
             {
-                Usuario usuarioBuscado = _eventContext.Usuario.FirstOrDefault(u => u.Email == email)!;
+                Usuario usuarioBuscado = _eventContext.Usuario.Select(u => new Usuario
+                    {
+                        IdUsuario = u.IdUsuario,
+                        Nome = u.Nome,
+                        Email = u.Email,
+                        Senha = u.Senha,
+
+                        TipoUsuario = new TipoUsuario()
+                        {
+                            IdTipoUsuario = u.IdTipoUsuario,
+                            Titulo = u.TipoUsuario!.Titulo
+                        }
+                    }
+                ).FirstOrDefault(u => u.Email! == email!)!;
 
                 if (usuarioBuscado != null)
                 {
@@ -111,7 +124,32 @@ namespace webapi.event_.tarde.Repositories
         }
 
 
+        /// <summary>
+        /// Deleta usuários
+        /// </summary>
         public void Deletar(Guid id)
+        {
+            try
+            {
+                Usuario UsuarioBuscado = new Usuario();
+
+                UsuarioBuscado.IdTipoUsuario = id;
+
+                _eventContext.Remove(UsuarioBuscado);
+
+                _eventContext.SaveChanges();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+
+        /// <summary>
+        /// Lista usuários
+        /// </summary>
+        public List<Usuario> Listar()
         {
             throw new NotImplementedException();
         }
