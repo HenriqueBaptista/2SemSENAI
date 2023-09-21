@@ -7,24 +7,24 @@ using webapi.event_.tarde.Repositories;
 namespace webapi.event_.tarde.Controllers
 {
     /// <summary>
-    /// Controller responsável pelos endpoints de TipoUsuario
+    /// Controller responsável pelos endpoints de Instituicao
     /// </summary>
     [Route("api/[controller]")]
     [ApiController]
     [Produces("application/json")]
-    public class TipoUsuarioController : ControllerBase
+    public class InstituicaoController : ControllerBase
     {
         /// <summary>
-        /// Chamada da interface de TipoUsuario
+        /// Chamada da interface de Instituicao
         /// </summary>
-        private ITipoUsuarioRepository _tipoUsuarioRepository { get; set; } //
+        private IInstituicaoRepository _instituicaoRepository { get; set; } //
 
         /// <summary>
-        /// Construtor do controller - chama o repositório de TipoUsuario
+        /// Construtor do controller - chama o repositório de Instituicao
         /// </summary>
-        public TipoUsuarioController()
+        public InstituicaoController()
         {
-            _tipoUsuarioRepository = new TipoUsuarioRepository();
+            _instituicaoRepository = new InstituicaoRepository();
         } //
 
 
@@ -32,13 +32,13 @@ namespace webapi.event_.tarde.Controllers
         /// Endpoint que acessa o método Cadastrar
         /// </summary>
         [HttpPost]
-        public IActionResult Post(TipoUsuario tipoUsuario)
+        public IActionResult Post(Instituicao instituicao)
         {
             try
             {
-                _tipoUsuarioRepository.Cadastrar(tipoUsuario);
+                _instituicaoRepository.Cadastrar(instituicao);
 
-                return StatusCode(201, "Tipo de usuário criado com sucesso!");
+                return StatusCode(201, "Instituição criada com sucesso!");
             }
             catch (Exception e)
             {
@@ -50,14 +50,14 @@ namespace webapi.event_.tarde.Controllers
         /// <summary>
         /// Endpoint que acessa o método BuscarPorId
         /// </summary>
-        [HttpGet ("{id}")]
+        [HttpGet("{id}")]
         public IActionResult GetById(Guid id)
         {
             try
             {
-                TipoUsuario tipoUsuarioBuscado = _tipoUsuarioRepository.BuscarPorId(id);
+                Instituicao instituicaoBuscada = _instituicaoRepository.BuscarPorId(id);
 
-                return Ok(tipoUsuarioBuscado);
+                return Ok(instituicaoBuscada);
             }
             catch (Exception e)
             {
@@ -74,7 +74,7 @@ namespace webapi.event_.tarde.Controllers
         {
             try
             {
-                return Ok(_tipoUsuarioRepository.Listar());
+                return Ok(_instituicaoRepository.Listar());
             }
             catch (Exception e)
             {
@@ -86,12 +86,12 @@ namespace webapi.event_.tarde.Controllers
         /// <summary>
         /// Endpoint que acessa o método Delete
         /// </summary>
-        [HttpDelete ("{id}")]
+        [HttpDelete("{id}")]
         public IActionResult Delete(Guid id)
         {
             try
             {
-                _tipoUsuarioRepository.Deletar(id);
+                _instituicaoRepository.Deletar(id);
 
                 return StatusCode(204);
             }
@@ -105,15 +105,14 @@ namespace webapi.event_.tarde.Controllers
         /// <summary>
         /// Endpoint que acessa o método Atualizar
         /// </summary>
-        /// <returns></returns>
         [HttpPut]
-        public IActionResult Put(TipoUsuario tipoUsuario)
+        public IActionResult Put(Instituicao instituicao)
         {
             try
             {
-                _tipoUsuarioRepository.Atualizar(tipoUsuario.IdTipoUsuario, tipoUsuario);
+                _instituicaoRepository.Atualizar(instituicao.IdInstituicao, instituicao);
 
-                return StatusCode(200, "Tipo de usuário atualizado");
+                return StatusCode(200, "Instituição atualizada");
             }
             catch (Exception e)
             {
@@ -121,4 +120,4 @@ namespace webapi.event_.tarde.Controllers
             }
         } //
     }
-} // Complete
+}

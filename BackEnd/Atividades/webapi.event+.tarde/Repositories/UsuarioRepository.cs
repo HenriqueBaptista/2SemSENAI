@@ -27,10 +27,31 @@ namespace webapi.event_.tarde.Repositories
         /// <summary>
         /// Atualiza o usuário
         /// </summary>
-        public void Atualizar(Usuario usuario)
+        public void Atualizar(Guid id, Usuario usuario)
         {
-            _eventContext.Usuario.Update(usuario);
-        }
+            try
+            {
+                Usuario UsuarioAtualizar = _eventContext.Usuario.Select(u => new Usuario
+                {
+                    IdUsuario = u.IdUsuario,
+                    Nome = u.Nome,
+                    Email = u.Email,
+                    Senha = u.Senha,
+                    IdTipoUsuario = u.IdTipoUsuario
+
+                }).FirstOrDefault(u => u.IdTipoUsuario == id)!;
+
+                UsuarioAtualizar = usuario;
+
+                _eventContext.Usuario.Update(usuario);
+
+                _eventContext.SaveChanges();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        } //
 
 
         /// <summary>
@@ -71,7 +92,7 @@ namespace webapi.event_.tarde.Repositories
             {
                 throw;
             }
-        }
+        } //
 
 
         /// <summary>
@@ -101,7 +122,7 @@ namespace webapi.event_.tarde.Repositories
             {
                 throw;
             }
-        }
+        } //
 
 
         /// <summary>
@@ -113,7 +134,7 @@ namespace webapi.event_.tarde.Repositories
             {
                 usuario.Senha = Criptografia.GerarHash(usuario.Senha!);
 
-                _eventContext.Add(usuario);
+                _eventContext.Usuario.Add(usuario);
 
                 _eventContext.SaveChanges();
             }
@@ -121,7 +142,7 @@ namespace webapi.event_.tarde.Repositories
             {
                 throw;
             }
-        }
+        } //
 
 
         /// <summary>
@@ -133,7 +154,7 @@ namespace webapi.event_.tarde.Repositories
             {
                 Usuario UsuarioBuscado = new Usuario();
 
-                UsuarioBuscado.IdTipoUsuario = id;
+                UsuarioBuscado.IdUsuario = id;
 
                 _eventContext.Remove(UsuarioBuscado);
 
@@ -143,7 +164,7 @@ namespace webapi.event_.tarde.Repositories
             {
                 throw;
             }
-        }
+        } //
 
 
         /// <summary>
@@ -151,7 +172,19 @@ namespace webapi.event_.tarde.Repositories
         /// </summary>
         public List<Usuario> Listar()
         {
-            throw new NotImplementedException();
-        }
+
+            return _eventContext.Usuario.Select(u => new Usuario
+            {
+                IdUsuario = u.IdUsuario,
+                Nome = u.Nome,
+                Email = u.Email,
+
+                TipoUsuario = new TipoUsuario()
+                {
+                    IdTipoUsuario = u.IdTipoUsuario,
+                    Titulo = u.TipoUsuario!.Titulo
+                }
+            }).ToList();
+        } //
     }
 }

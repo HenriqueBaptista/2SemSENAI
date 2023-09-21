@@ -17,7 +17,7 @@ namespace webapi.event_.tarde.Controllers
         /// <summary>
         /// Chamada da interface IUsuarioRepository
         /// </summary>
-        private IUsuarioRepository _usuarioRepository;
+        private IUsuarioRepository _usuarioRepository; //
 
         /// <summary>
         /// Construtor do controller - chama o repositório de Usuario
@@ -25,7 +25,7 @@ namespace webapi.event_.tarde.Controllers
         public UsuarioController()
         {
             _usuarioRepository = new UsuarioRepository();
-        }
+        } //
 
 
         /// <summary>
@@ -44,7 +44,24 @@ namespace webapi.event_.tarde.Controllers
             {
                 return BadRequest(e.Message);
             }
-        }
+        } //
+
+
+        /// <summary>
+        /// Endpoint que acessa o método Listar
+        /// </summary>
+        [HttpGet]
+        public IActionResult Get()
+        {
+            try
+            {
+                return Ok(_usuarioRepository.Listar()!);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        } //
 
 
         /// <summary>
@@ -63,7 +80,26 @@ namespace webapi.event_.tarde.Controllers
             {
                 return BadRequest(e.Message);
             }
-        }
+        } //
+
+
+        /// <summary>
+        /// Endpoint que acessa o método Atualizar
+        /// </summary>
+        [HttpPut]
+        public IActionResult Put(Usuario usuario)
+        {
+            try
+            {
+                _usuarioRepository.Atualizar(usuario.IdUsuario, usuario);
+
+                return StatusCode(200, "Usuário atualizado");
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        } //
 
 
         /// <summary>
@@ -82,6 +118,6 @@ namespace webapi.event_.tarde.Controllers
             {
                 return BadRequest(e.Message);
             }
-        }
+        } //
     }
-}
+} // Complete

@@ -28,7 +28,7 @@ namespace webapi.event_.tarde.Interfaces
         /// <summary>
         /// Atualiza usuários
         /// </summary>
-        void Atualizar(Usuario usuario);
+        void Atualizar(Guid id, Usuario usuario);
 
 
         /// <summary>
@@ -43,4 +43,4 @@ namespace webapi.event_.tarde.Interfaces
         /// <returns></returns>
         List<Usuario> Listar();
     }
-}
+} // Complete

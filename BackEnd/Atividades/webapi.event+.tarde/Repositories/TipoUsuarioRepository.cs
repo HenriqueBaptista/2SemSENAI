@@ -12,7 +12,7 @@ namespace webapi.event_.tarde.Repositories
         /// <summary>
         /// Acesso a context
         /// </summary>
-        private readonly EventContext _eventContext;
+        private readonly EventContext _eventContext; //
 
         /// <summary>
         /// Construtor para obtenção do acesso a context
@@ -20,7 +20,7 @@ namespace webapi.event_.tarde.Repositories
         public TipoUsuarioRepository()
         {
             _eventContext = new EventContext();
-        }
+        } //
 
 
 
@@ -31,10 +31,10 @@ namespace webapi.event_.tarde.Repositories
         {
             try
             {
-                TipoUsuario tipoUsuarioAtualizar = _eventContext.Usuario.Select(tu => new TipoUsuario
+                TipoUsuario tipoUsuarioAtualizar = _eventContext.TipoUsuario.Select(tu => new TipoUsuario
                 {
                     IdTipoUsuario = tu.IdTipoUsuario,
-                    Titulo = tu.TipoUsuario!.Titulo
+                    Titulo = tu.Titulo
                 }).FirstOrDefault(tu => tu.IdTipoUsuario == id)!;
 
                 tipoUsuarioAtualizar = tipoUsuario;
@@ -47,7 +47,7 @@ namespace webapi.event_.tarde.Repositories
             {
                 throw;
             }
-        }
+        } //
 
 
         /// <summary>
@@ -69,7 +69,7 @@ namespace webapi.event_.tarde.Repositories
             {
                 throw;
             }
-        }
+        } //
 
 
         /// <summary>
@@ -87,7 +87,7 @@ namespace webapi.event_.tarde.Repositories
             {
                 throw;
             }
-        }
+        } //
 
 
         /// <summary>
@@ -95,14 +95,21 @@ namespace webapi.event_.tarde.Repositories
         /// </summary>
         public void Deletar(Guid id)
         {
-            TipoUsuario tipoUsuarioBuscado = new TipoUsuario();
+            try
+            {
+                TipoUsuario tipoUsuarioBuscado = new TipoUsuario();
 
-            tipoUsuarioBuscado.IdTipoUsuario = id;
+                tipoUsuarioBuscado.IdTipoUsuario = id;
 
-            _eventContext.Remove(tipoUsuarioBuscado);
+                _eventContext.Remove(tipoUsuarioBuscado);
 
-            _eventContext.SaveChanges();
-        }
+                _eventContext.SaveChanges();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        } //
 
 
         /// <summary>
@@ -115,6 +122,6 @@ namespace webapi.event_.tarde.Repositories
                 IdTipoUsuario = tu.IdTipoUsuario,
                 Titulo = tu.Titulo
             }).ToList();
-        }
+        } //
     }
 } // Complete
