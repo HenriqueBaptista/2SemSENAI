@@ -49,6 +49,86 @@
             Acesso ao banco de dados
             </summary>
         </member>
+        <member name="T:webapi.event_.tarde.Controllers.ComentarioEventoController">
+            <summary>
+            Controller responsável pelos endpoints de ComentarioEvento
+            </summary>
+        </member>
+        <member name="P:webapi.event_.tarde.Controllers.ComentarioEventoController._ComentarioEventoRepository">
+            <summary>
+            Acesso a Comentario
+            </summary>
+        </member>
+        <member name="M:webapi.event_.tarde.Controllers.ComentarioEventoController.#ctor">
+            <summary>
+            Construtor para usar o Comentario
+            </summary>
+        </member>
+        <member name="M:webapi.event_.tarde.Controllers.ComentarioEventoController.Post(webapi.event_.tarde.Domains.ComentarioEvento)">
+            <summary>
+            Endpoint que acessa o método Cadastrar
+            </summary>
+        </member>
+        <member name="M:webapi.event_.tarde.Controllers.ComentarioEventoController.GetById(System.Guid)">
+            <summary>
+            Endpoint que acessa o método BuscarPorId
+            </summary>
+        </member>
+        <member name="M:webapi.event_.tarde.Controllers.ComentarioEventoController.Get">
+            <summary>
+            Endpoint que acessa o método Listar
+            </summary>
+        </member>
+        <member name="M:webapi.event_.tarde.Controllers.ComentarioEventoController.Delete(System.Guid)">
+            <summary>
+            Endpoint que acessa o método Delete
+            </summary>
+        </member>
+        <member name="M:webapi.event_.tarde.Controllers.ComentarioEventoController.SwitchBool(System.Guid)">
+            <summary>
+            Endpoint que acessa o método AlterarExibicao
+            </summary>
+        </member>
+        <member name="T:webapi.event_.tarde.Controllers.EventoController">
+            <summary>
+            Controller responsável pelos endpoints de Evento
+            </summary>
+        </member>
+        <member name="P:webapi.event_.tarde.Controllers.EventoController._eventoRepository">
+            <summary>
+            Chamada da interface de Evento
+            </summary>
+        </member>
+        <member name="M:webapi.event_.tarde.Controllers.EventoController.#ctor">
+            <summary>
+            Construtor do controller - chama o repositório de Evento
+            </summary>
+        </member>
+        <member name="M:webapi.event_.tarde.Controllers.EventoController.Post(webapi.event_.tarde.Domains.Evento)">
+            <summary>
+            Endpoint que acessa o método Cadastrar
+            </summary>
+        </member>
+        <member name="M:webapi.event_.tarde.Controllers.EventoController.GetById(System.Guid)">
+            <summary>
+            Endpoint que acessa o método BuscarPorId
+            </summary>
+        </member>
+        <member name="M:webapi.event_.tarde.Controllers.EventoController.Get">
+            <summary>
+            Endpoint que acessa o método Listar
+            </summary>
+        </member>
+        <member name="M:webapi.event_.tarde.Controllers.EventoController.Delete(System.Guid)">
+            <summary>
+            Endpoint que acessa o método Delete
+            </summary>
+        </member>
+        <member name="M:webapi.event_.tarde.Controllers.EventoController.Put(webapi.event_.tarde.Domains.Evento)">
+            <summary>
+            Endpoint que acessa o método Atualizar
+            </summary>
+        </member>
         <member name="T:webapi.event_.tarde.Controllers.InstituicaoController">
             <summary>
             Controller responsável pelos endpoints de Instituicao
@@ -107,6 +187,46 @@
         <member name="M:webapi.event_.tarde.Controllers.LoginController.Login(webapi.event_.tarde.ViewModels.LoginViewModel)">
             <summary>
             Loga um usuário
+            </summary>
+        </member>
+        <member name="T:webapi.event_.tarde.Controllers.PresencaEventoController">
+            <summary>
+            Controller responsável pelos endpoints de PresencaEvento
+            </summary>
+        </member>
+        <member name="P:webapi.event_.tarde.Controllers.PresencaEventoController._presencaEventoRepository">
+            <summary>
+            Acesso a interface de PresencaEvento
+            </summary>
+        </member>
+        <member name="M:webapi.event_.tarde.Controllers.PresencaEventoController.#ctor">
+            <summary>
+            Usa o repositório de PresencaEvento
+            </summary>
+        </member>
+        <member name="M:webapi.event_.tarde.Controllers.PresencaEventoController.Post(webapi.event_.tarde.Domains.PresencaEvento)">
+            <summary>
+            Endpoint que acessa o método Cadastrar
+            </summary>
+        </member>
+        <member name="M:webapi.event_.tarde.Controllers.PresencaEventoController.GetById(System.Guid)">
+            <summary>
+            Endpoint que acessa o método BuscarPorId
+            </summary>
+        </member>
+        <member name="M:webapi.event_.tarde.Controllers.PresencaEventoController.Get">
+            <summary>
+            Endpoint que acessa o método Listar
+            </summary>
+        </member>
+        <member name="M:webapi.event_.tarde.Controllers.PresencaEventoController.Delete(System.Guid)">
+            <summary>
+            Endpoint que acessa o método Delete
+            </summary>
+        </member>
+        <member name="M:webapi.event_.tarde.Controllers.PresencaEventoController.Put(System.Guid)">
+            <summary>
+            Endpoint que acessa o método Alterar
             </summary>
         </member>
         <member name="T:webapi.event_.tarde.Controllers.TipoEventoController">
@@ -441,6 +561,66 @@
             Foreign Key para usar TipoUsuario
             </summary>
         </member>
+        <member name="T:webapi.event_.tarde.Interfaces.IComentarioEventoRepositoy">
+            <summary>
+            Inteface responsável pelo repositório de ComentarioEvento
+            </summary>
+        </member>
+        <member name="M:webapi.event_.tarde.Interfaces.IComentarioEventoRepositoy.Cadastrar(webapi.event_.tarde.Domains.ComentarioEvento)">
+            <summary>
+            Cadastra um comentário
+            </summary>
+        </member>
+        <member name="M:webapi.event_.tarde.Interfaces.IComentarioEventoRepositoy.Deletar(System.Guid)">
+            <summary>
+            Deleta um cometário
+            </summary>
+        </member>
+        <member name="M:webapi.event_.tarde.Interfaces.IComentarioEventoRepositoy.AlterarExibicao(System.Guid)">
+            <summary>
+            Altera a exibição de um comentário - Exibe (true) ou Não exibe (false)
+            </summary>
+        </member>
+        <member name="M:webapi.event_.tarde.Interfaces.IComentarioEventoRepositoy.BuscarPorId(System.Guid)">
+            <summary>
+            Busca um comentário pelo Id
+            </summary>
+        </member>
+        <member name="M:webapi.event_.tarde.Interfaces.IComentarioEventoRepositoy.Listar">
+            <summary>
+            Lista comentários
+            </summary>
+        </member>
+        <member name="T:webapi.event_.tarde.Interfaces.IEventoRepository">
+            <summary>
+            Interface responsável pelo repositório de Evento
+            </summary>
+        </member>
+        <member name="M:webapi.event_.tarde.Interfaces.IEventoRepository.Cadastrar(webapi.event_.tarde.Domains.Evento)">
+            <summary>
+            Cadastra eventos
+            </summary>
+        </member>
+        <member name="M:webapi.event_.tarde.Interfaces.IEventoRepository.Deletar(System.Guid)">
+            <summary>
+            Deleta eventos
+            </summary>
+        </member>
+        <member name="M:webapi.event_.tarde.Interfaces.IEventoRepository.Atualizar(System.Guid,webapi.event_.tarde.Domains.Evento)">
+            <summary>
+            Atualiza eventos
+            </summary>
+        </member>
+        <member name="M:webapi.event_.tarde.Interfaces.IEventoRepository.Listar">
+            <summary>
+            Lista eventos
+            </summary>
+        </member>
+        <member name="M:webapi.event_.tarde.Interfaces.IEventoRepository.BuscarPorId(System.Guid)">
+            <summary>
+            Busca eventos pelo id
+            </summary>
+        </member>
         <member name="T:webapi.event_.tarde.Interfaces.IInstituicaoRepository">
             <summary>
             Interface responsável pelo repositório de IInstituicao
@@ -469,6 +649,36 @@
         <member name="M:webapi.event_.tarde.Interfaces.IInstituicaoRepository.Deletar(System.Guid)">
             <summary>
             Deleta instituições
+            </summary>
+        </member>
+        <member name="T:webapi.event_.tarde.Interfaces.IPresencaEventoRepository">
+            <summary>
+            Interface responsável pelo repositório de PresencaEvento
+            </summary>
+        </member>
+        <member name="M:webapi.event_.tarde.Interfaces.IPresencaEventoRepository.Cadastrar(webapi.event_.tarde.Domains.PresencaEvento)">
+            <summary>
+            Cadastra uma presença
+            </summary>
+        </member>
+        <member name="M:webapi.event_.tarde.Interfaces.IPresencaEventoRepository.Deletar(System.Guid)">
+            <summary>
+            Cancela uma presença
+            </summary>
+        </member>
+        <member name="M:webapi.event_.tarde.Interfaces.IPresencaEventoRepository.Alterar(System.Guid)">
+            <summary>
+            Altera uma presença - Presente (true) ou Ausente (false)
+            </summary>
+        </member>
+        <member name="M:webapi.event_.tarde.Interfaces.IPresencaEventoRepository.BuscarPorId(System.Guid)">
+            <summary>
+            Busca uma presença pelo Id
+            </summary>
+        </member>
+        <member name="M:webapi.event_.tarde.Interfaces.IPresencaEventoRepository.Listar">
+            <summary>
+            Lista presenças de determinado usuário
             </summary>
         </member>
         <member name="T:webapi.event_.tarde.Interfaces.ITipoEventoRepository">
@@ -579,6 +789,86 @@
         <member name="M:webapi.event_.tarde.Migrations.DB.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <inheritdoc />
         </member>
+        <member name="T:webapi.event_.tarde.Repositories.ComentarioEventoRepository">
+            <summary>
+            Repositório responsável pelo ComentarioEvento
+            </summary>
+        </member>
+        <member name="F:webapi.event_.tarde.Repositories.ComentarioEventoRepository._eventContext">
+            <summary>
+            Acesso a context
+            </summary>
+        </member>
+        <member name="M:webapi.event_.tarde.Repositories.ComentarioEventoRepository.#ctor">
+            <summary>
+            Construtor para a obtenção da context
+            </summary>
+        </member>
+        <member name="M:webapi.event_.tarde.Repositories.ComentarioEventoRepository.AlterarExibicao(System.Guid)">
+            <summary>
+            Altera comentários
+            </summary>
+        </member>
+        <member name="M:webapi.event_.tarde.Repositories.ComentarioEventoRepository.BuscarPorId(System.Guid)">
+            <summary>
+            Busca comentários pelo id
+            </summary>
+        </member>
+        <member name="M:webapi.event_.tarde.Repositories.ComentarioEventoRepository.Cadastrar(webapi.event_.tarde.Domains.ComentarioEvento)">
+            <summary>
+            Cadastra comentários
+            </summary>
+        </member>
+        <member name="M:webapi.event_.tarde.Repositories.ComentarioEventoRepository.Deletar(System.Guid)">
+            <summary>
+            Deleta comentários
+            </summary>
+        </member>
+        <member name="M:webapi.event_.tarde.Repositories.ComentarioEventoRepository.Listar">
+            <summary>
+            Lista comentários
+            </summary>
+        </member>
+        <member name="T:webapi.event_.tarde.Repositories.EventoRepository">
+            <summary>
+            Repositório responsável pelos métodos de Evento
+            </summary>
+        </member>
+        <member name="F:webapi.event_.tarde.Repositories.EventoRepository._eventContext">
+            <summary>
+            Acesso a content
+            </summary>
+        </member>
+        <member name="M:webapi.event_.tarde.Repositories.EventoRepository.#ctor">
+            <summary>
+            Construtor para a obtenção da content
+            </summary>
+        </member>
+        <member name="M:webapi.event_.tarde.Repositories.EventoRepository.Atualizar(System.Guid,webapi.event_.tarde.Domains.Evento)">
+            <summary>
+            Atualiza eventos
+            </summary>
+        </member>
+        <member name="M:webapi.event_.tarde.Repositories.EventoRepository.BuscarPorId(System.Guid)">
+            <summary>
+            Busca eventos pelo Id
+            </summary>
+        </member>
+        <member name="M:webapi.event_.tarde.Repositories.EventoRepository.Cadastrar(webapi.event_.tarde.Domains.Evento)">
+            <summary>
+            Cadastra eventos
+            </summary>
+        </member>
+        <member name="M:webapi.event_.tarde.Repositories.EventoRepository.Deletar(System.Guid)">
+            <summary>
+            Deleta eventos
+            </summary>
+        </member>
+        <member name="M:webapi.event_.tarde.Repositories.EventoRepository.Listar">
+            <summary>
+            Lista eventos
+            </summary>
+        </member>
         <member name="T:webapi.event_.tarde.Repositories.InstituicaoRepository">
             <summary>
             Repositório responsável pelos métodos de Instituicao
@@ -617,6 +907,47 @@
         <member name="M:webapi.event_.tarde.Repositories.InstituicaoRepository.Listar">
             <summary>
             Lista instituições
+            </summary>
+        </member>
+        <member name="T:webapi.event_.tarde.Repositories.PresencaEventoRepository">
+            <summary>
+            Repositório responsável pelos métodos de PresencaEvento
+            </summary>
+        </member>
+        <member name="F:webapi.event_.tarde.Repositories.PresencaEventoRepository._eventContext">
+            <summary>
+            Acesso a context
+            </summary>
+        </member>
+        <member name="M:webapi.event_.tarde.Repositories.PresencaEventoRepository.#ctor">
+            <summary>
+            Construtor para a obtenção da context
+            </summary>
+        </member>
+        <member name="M:webapi.event_.tarde.Repositories.PresencaEventoRepository.Alterar(System.Guid)">
+            <summary>
+            Altera presenças
+            </summary>
+        </member>
+        <member name="M:webapi.event_.tarde.Repositories.PresencaEventoRepository.BuscarPorId(System.Guid)">
+            <summary>
+            Busca presenças pelo Id
+            </summary>
+        </member>
+        <member name="M:webapi.event_.tarde.Repositories.PresencaEventoRepository.Cadastrar(webapi.event_.tarde.Domains.PresencaEvento)">
+            <summary>
+            Cadastra presenças
+            </summary>
+            <param name="presenca"></param>
+        </member>
+        <member name="M:webapi.event_.tarde.Repositories.PresencaEventoRepository.Deletar(System.Guid)">
+            <summary>
+            Deleta presenças
+            </summary>
+        </member>
+        <member name="M:webapi.event_.tarde.Repositories.PresencaEventoRepository.Listar">
+            <summary>
+            Lista presenças
             </summary>
         </member>
         <member name="T:webapi.event_.tarde.Repositories.TipoEventoRepository">

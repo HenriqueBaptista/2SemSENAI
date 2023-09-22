@@ -7,37 +7,37 @@ using webapi.event_.tarde.Repositories;
 namespace webapi.event_.tarde.Controllers
 {
     /// <summary>
-    /// Controller responsável pelos endpoints de Evento
+    /// Controller responsável pelos endpoints de ComentarioEvento
     /// </summary>
     [Route("api/[controller]")]
     [ApiController]
     [Produces("application/json")]
-    public class EventoController : ControllerBase
+    public class ComentarioEventoController : ControllerBase
     {
         /// <summary>
-        /// Chamada da interface de Evento
+        /// Acesso a Comentario
         /// </summary>
-        private IEventoRepository _eventoRepository { get; set; }
+        private IComentarioEventoRepositoy _ComentarioEventoRepository { get; set; }
 
         /// <summary>
-        /// Construtor do controller - chama o repositório de Evento
+        /// Construtor para usar o Comentario
         /// </summary>
-        public EventoController()
+        public ComentarioEventoController()
         {
-            _eventoRepository = new EventoRepository();
+            _ComentarioEventoRepository = new ComentarioEventoRepository();
         }
 
         /// <summary>
         /// Endpoint que acessa o método Cadastrar
         /// </summary>
         [HttpPost]
-        public IActionResult Post(Evento Evento)
+        public IActionResult Post(ComentarioEvento comentario)
         {
             try
             {
-                _eventoRepository.Cadastrar(Evento);
+                _ComentarioEventoRepository.Cadastrar(comentario);
 
-                return StatusCode(201, "Evento criado com sucesso!");
+                return StatusCode(201, "Comentário enviado com sucesso!");
             }
             catch (Exception e)
             {
@@ -54,9 +54,9 @@ namespace webapi.event_.tarde.Controllers
         {
             try
             {
-                Evento eventoBuscado = _eventoRepository.BuscarPorId(id);
+                ComentarioEvento comentario = _ComentarioEventoRepository.BuscarPorId(id);
 
-                return Ok(eventoBuscado);
+                return Ok(comentario);
             }
             catch (Exception e)
             {
@@ -73,7 +73,7 @@ namespace webapi.event_.tarde.Controllers
         {
             try
             {
-                return Ok(_eventoRepository.Listar());
+                return Ok(_ComentarioEventoRepository.Listar());
             }
             catch (Exception e)
             {
@@ -90,7 +90,7 @@ namespace webapi.event_.tarde.Controllers
         {
             try
             {
-                _eventoRepository.Deletar(id);
+                _ComentarioEventoRepository.Deletar(id);
 
                 return StatusCode(204);
             }
@@ -102,16 +102,16 @@ namespace webapi.event_.tarde.Controllers
 
 
         /// <summary>
-        /// Endpoint que acessa o método Atualizar
+        /// Endpoint que acessa o método AlterarExibicao
         /// </summary>
-        [HttpPut]
-        public IActionResult Put(Evento evento)
+        [HttpPut("{id}")]
+        public IActionResult SwitchBool(Guid id)
         {
             try
             {
-                _eventoRepository.Atualizar(evento.IdEvento, evento);
+                _ComentarioEventoRepository.AlterarExibicao(id);
 
-                return StatusCode(200, "Evento atualizado");
+                return StatusCode(200, "Comentário alterado");
             }
             catch (Exception e)
             {

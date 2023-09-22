@@ -28,7 +28,7 @@ namespace webapi.event_.tarde.Interfaces
         /// <summary>
         /// Lista eventos
         /// </summary>
-        List<Evento> ListarEventos();
+        List<Evento> Listar();
 
 
         /// <summary>

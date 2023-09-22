@@ -7,37 +7,38 @@ using webapi.event_.tarde.Repositories;
 namespace webapi.event_.tarde.Controllers
 {
     /// <summary>
-    /// Controller responsável pelos endpoints de Evento
+    /// Controller responsável pelos endpoints de PresencaEvento
     /// </summary>
     [Route("api/[controller]")]
     [ApiController]
     [Produces("application/json")]
-    public class EventoController : ControllerBase
+    public class PresencaEventoController : ControllerBase
     {
         /// <summary>
-        /// Chamada da interface de Evento
+        /// Acesso a interface de PresencaEvento
         /// </summary>
-        private IEventoRepository _eventoRepository { get; set; }
+        private IPresencaEventoRepository _presencaEventoRepository { get; set; }
 
         /// <summary>
-        /// Construtor do controller - chama o repositório de Evento
+        /// Usa o repositório de PresencaEvento
         /// </summary>
-        public EventoController()
+        public PresencaEventoController()
         {
-            _eventoRepository = new EventoRepository();
+            _presencaEventoRepository = new PresencaEventoRepository();
         }
+
 
         /// <summary>
         /// Endpoint que acessa o método Cadastrar
         /// </summary>
         [HttpPost]
-        public IActionResult Post(Evento Evento)
+        public IActionResult Post(PresencaEvento presencaEvento)
         {
             try
             {
-                _eventoRepository.Cadastrar(Evento);
+                _presencaEventoRepository.Cadastrar(presencaEvento);
 
-                return StatusCode(201, "Evento criado com sucesso!");
+                return StatusCode(201, "Presença cadastrada com sucesso!");
             }
             catch (Exception e)
             {
@@ -54,9 +55,9 @@ namespace webapi.event_.tarde.Controllers
         {
             try
             {
-                Evento eventoBuscado = _eventoRepository.BuscarPorId(id);
+                PresencaEvento presencaEvento = _presencaEventoRepository.BuscarPorId(id);
 
-                return Ok(eventoBuscado);
+                return Ok(presencaEvento);
             }
             catch (Exception e)
             {
@@ -73,7 +74,7 @@ namespace webapi.event_.tarde.Controllers
         {
             try
             {
-                return Ok(_eventoRepository.Listar());
+                return Ok(_presencaEventoRepository.Listar());
             }
             catch (Exception e)
             {
@@ -90,7 +91,7 @@ namespace webapi.event_.tarde.Controllers
         {
             try
             {
-                _eventoRepository.Deletar(id);
+                _presencaEventoRepository.Deletar(id);
 
                 return StatusCode(204);
             }
@@ -102,16 +103,16 @@ namespace webapi.event_.tarde.Controllers
 
 
         /// <summary>
-        /// Endpoint que acessa o método Atualizar
+        /// Endpoint que acessa o método Alterar
         /// </summary>
         [HttpPut]
-        public IActionResult Put(Evento evento)
+        public IActionResult Put(Guid id)
         {
             try
             {
-                _eventoRepository.Atualizar(evento.IdEvento, evento);
+                _presencaEventoRepository.Alterar(id);
 
-                return StatusCode(200, "Evento atualizado");
+                return StatusCode(200, "Presença alterada");
             }
             catch (Exception e)
             {

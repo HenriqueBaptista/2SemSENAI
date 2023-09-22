@@ -1,7 +1,8 @@
 ﻿using webapi.event_.tarde.Contexts;
 using webapi.event_.tarde.Domains;
+using webapi.event_.tarde.Interfaces;
 
-namespace webapi.event_.tarde.Interfaces
+namespace webapi.event_.tarde.Repositories
 {
     /// <summary>
     /// Repositório responsável pelos métodos de Evento
@@ -19,7 +20,7 @@ namespace webapi.event_.tarde.Interfaces
         public EventoRepository()
         {
             _eventContext = new EventContext();
-        }
+        } //
 
 
         /// <summary>
@@ -134,9 +135,9 @@ namespace webapi.event_.tarde.Interfaces
         /// <summary>
         /// Lista eventos
         /// </summary>
-        public List<Evento> ListarEventos()
+        public List<Evento> Listar()
         {
             return _eventContext.Evento.ToList();
-        }
+        } //
     }
-}
+} // Complete

@@ -187,4 +187,4 @@ namespace webapi.event_.tarde.Repositories
             }).ToList();
         } //
     }
-}
+} // Complete

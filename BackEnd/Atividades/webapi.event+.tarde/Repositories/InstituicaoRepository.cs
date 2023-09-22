@@ -20,7 +20,7 @@ namespace webapi.event_.tarde.Repositories
         public InstituicaoRepository()
         {
             _eventContext = new EventContext();
-        }
+        } //
 
 
         /// <summary>
@@ -49,7 +49,7 @@ namespace webapi.event_.tarde.Repositories
 
                 throw;
             }
-        }
+        } //
 
 
         /// <summary>
@@ -73,7 +73,7 @@ namespace webapi.event_.tarde.Repositories
             {
                 throw;
             }
-        }
+        } //
 
 
         /// <summary>
@@ -91,7 +91,7 @@ namespace webapi.event_.tarde.Repositories
             {
                 throw;
             }
-        }
+        } //
 
 
         /// <summary>
@@ -113,7 +113,7 @@ namespace webapi.event_.tarde.Repositories
             {
                 throw;
             }
-        }
+        } //
 
 
         /// <summary>
@@ -128,6 +128,6 @@ namespace webapi.event_.tarde.Repositories
                 Endereco= i.Endereco,
                 NomeFantasia= i.NomeFantasia,
             }).ToList();
-        }
+        } //
     }
-}
+} // Complete
