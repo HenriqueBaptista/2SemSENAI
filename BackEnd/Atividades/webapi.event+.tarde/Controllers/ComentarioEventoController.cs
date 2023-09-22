@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using webapi.event_.tarde.Domains;
 using webapi.event_.tarde.Interfaces;
@@ -31,6 +32,7 @@ namespace webapi.event_.tarde.Controllers
         /// Endpoint que acessa o método Cadastrar
         /// </summary>
         [HttpPost]
+        [Authorize]
         public IActionResult Post(ComentarioEvento comentario)
         {
             try
@@ -50,6 +52,7 @@ namespace webapi.event_.tarde.Controllers
         /// Endpoint que acessa o método BuscarPorId
         /// </summary>
         [HttpGet("{id}")]
+        [Authorize]
         public IActionResult GetById(Guid id)
         {
             try
@@ -69,6 +72,7 @@ namespace webapi.event_.tarde.Controllers
         /// Endpoint que acessa o método Listar
         /// </summary>
         [HttpGet]
+        [Authorize]
         public IActionResult Get()
         {
             try
@@ -86,6 +90,7 @@ namespace webapi.event_.tarde.Controllers
         /// Endpoint que acessa o método Delete
         /// </summary>
         [HttpDelete("{id}")]
+        [Authorize]
         public IActionResult Delete(Guid id)
         {
             try
@@ -105,6 +110,7 @@ namespace webapi.event_.tarde.Controllers
         /// Endpoint que acessa o método AlterarExibicao
         /// </summary>
         [HttpPut("{id}")]
+        [Authorize]
         public IActionResult SwitchBool(Guid id)
         {
             try
