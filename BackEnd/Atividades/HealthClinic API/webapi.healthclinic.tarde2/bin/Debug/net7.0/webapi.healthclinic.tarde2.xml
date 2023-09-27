@@ -1,0 +1,340 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>webapi.healthclinic.tarde2</name>
+    </assembly>
+    <members>
+        <member name="T:webapi.healthclinic.tarde2.Contexts.HealthContext">
+            <summary>
+            Context de Health Clinic
+            </summary>
+        </member>
+        <member name="P:webapi.healthclinic.tarde2.Contexts.HealthContext.TipoUsuario">
+            <summary>
+            TipoUsuario
+            </summary>
+        </member>
+        <member name="P:webapi.healthclinic.tarde2.Contexts.HealthContext.Usuario">
+            <summary>
+            Usuario
+            </summary>
+        </member>
+        <member name="P:webapi.healthclinic.tarde2.Contexts.HealthContext.Clinica">
+            <summary>
+            Clinica
+            </summary>
+        </member>
+        <member name="P:webapi.healthclinic.tarde2.Contexts.HealthContext.Agendamento">
+            <summary>
+            Agendamento
+            </summary>
+        </member>
+        <member name="P:webapi.healthclinic.tarde2.Contexts.HealthContext.TipoConsulta">
+            <summary>
+            TipoConsulta
+            </summary>
+        </member>
+        <member name="P:webapi.healthclinic.tarde2.Contexts.HealthContext.Consulta">
+            <summary>
+            Consulta
+            </summary>
+        </member>
+        <member name="M:webapi.healthclinic.tarde2.Contexts.HealthContext.OnConfiguring(Microsoft.EntityFrameworkCore.DbContextOptionsBuilder)">
+            <summary>
+            Acesso ao banco de dados
+            </summary>
+        </member>
+        <member name="T:webapi.healthclinic.tarde2.Controllers.TipoConsultaController">
+            <summary>
+            Controller de TipoUsuario
+            </summary>
+        </member>
+        <member name="M:webapi.healthclinic.tarde2.Controllers.TipoConsultaController.#ctor">
+            <summary>
+            Usa o repositório TipoConsulta
+            </summary>
+        </member>
+        <member name="M:webapi.healthclinic.tarde2.Controllers.TipoConsultaController.Post(webapi.healthclinic.tarde2.Domains.TipoConsulta)">
+            <summary>
+            Cadastrar
+            </summary>
+        </member>
+        <member name="M:webapi.healthclinic.tarde2.Controllers.TipoConsultaController.Get">
+            <summary>
+            Listar
+            </summary>
+        </member>
+        <member name="M:webapi.healthclinic.tarde2.Controllers.TipoConsultaController.Put(webapi.healthclinic.tarde2.Domains.TipoConsulta)">
+            <summary>
+            Atualizar
+            </summary>
+        </member>
+        <member name="T:webapi.healthclinic.tarde2.Domains.Agendamento">
+            <summary>
+            Tabela de Agendamento
+            </summary>
+        </member>
+        <member name="P:webapi.healthclinic.tarde2.Domains.Agendamento.IdAgendamento">
+            <summary>
+            Primary Key de Agendamento
+            </summary>
+        </member>
+        <member name="P:webapi.healthclinic.tarde2.Domains.Agendamento.DiaAgendamento">
+            <summary>
+            Dia do agendamento
+            </summary>
+        </member>
+        <member name="P:webapi.healthclinic.tarde2.Domains.Agendamento.IdUsuario">
+            <summary>
+            Id do usuário
+            </summary>
+        </member>
+        <member name="P:webapi.healthclinic.tarde2.Domains.Agendamento.Usuario">
+            <summary>
+            Foreign Key - Usuario
+            </summary>
+        </member>
+        <member name="P:webapi.healthclinic.tarde2.Domains.Agendamento.IdClinica">
+            <summary>
+            Id da clínica
+            </summary>
+        </member>
+        <member name="P:webapi.healthclinic.tarde2.Domains.Agendamento.Clinica">
+            <summary>
+            Foreign Key - Clinica
+            </summary>
+        </member>
+        <member name="T:webapi.healthclinic.tarde2.Domains.Clinica">
+            <summary>
+            Tabela de Clinica
+            </summary>
+        </member>
+        <member name="P:webapi.healthclinic.tarde2.Domains.Clinica.IdClinica">
+            <summary>
+            Primary Key de Clinica
+            </summary>
+        </member>
+        <member name="P:webapi.healthclinic.tarde2.Domains.Clinica.Endereco">
+            <summary>
+            Endereço da clínica
+            </summary>
+        </member>
+        <member name="P:webapi.healthclinic.tarde2.Domains.Clinica.HorarioFunionamento">
+            <summary>
+            Horario de funcionamenro da clínica
+            </summary>
+        </member>
+        <member name="P:webapi.healthclinic.tarde2.Domains.Clinica.CNPJ">
+            <summary>
+            CNPJ da clínica
+            </summary>
+        </member>
+        <member name="P:webapi.healthclinic.tarde2.Domains.Clinica.NomeFantasia">
+            <summary>
+            Nome fantasia da clínica
+            </summary>
+        </member>
+        <member name="P:webapi.healthclinic.tarde2.Domains.Clinica.RazaoSocial">
+            <summary>
+            Razão social da clínica
+            </summary>
+        </member>
+        <member name="T:webapi.healthclinic.tarde2.Domains.Consulta">
+            <summary>
+            Tabela de Consulta
+            </summary>
+        </member>
+        <member name="P:webapi.healthclinic.tarde2.Domains.Consulta.IdConsulta">
+            <summary>
+            Primary Key de Consulta
+            </summary>
+        </member>
+        <member name="P:webapi.healthclinic.tarde2.Domains.Consulta.Prontuario">
+            <summary>
+            Prontuário/descrição da consulta
+            </summary>
+        </member>
+        <member name="P:webapi.healthclinic.tarde2.Domains.Consulta.Condição">
+            <summary>
+            Condição - Agendada (true) ou Cancelada (false)
+            </summary>
+        </member>
+        <member name="P:webapi.healthclinic.tarde2.Domains.Consulta.IdTipoConsulta">
+            <summary>
+            Id do tipo de consulta
+            </summary>
+        </member>
+        <member name="P:webapi.healthclinic.tarde2.Domains.Consulta.TipoConsulta">
+            <summary>
+            Foreign Key - TipoConsulta
+            </summary>
+        </member>
+        <member name="P:webapi.healthclinic.tarde2.Domains.Consulta.IdAgendamento">
+            <summary>
+            Id do agendamento
+            </summary>
+        </member>
+        <member name="P:webapi.healthclinic.tarde2.Domains.Consulta.Agendamento">
+            <summary>
+            Foreign Key - Agendamento
+            </summary>
+        </member>
+        <member name="T:webapi.healthclinic.tarde2.Domains.TipoConsulta">
+            <summary>
+            Tabela de TipoConsulta
+            </summary>
+        </member>
+        <member name="P:webapi.healthclinic.tarde2.Domains.TipoConsulta.IdTipoConsulta">
+            <summary>
+            Primary Key de TipoConsulta
+            </summary>
+        </member>
+        <member name="P:webapi.healthclinic.tarde2.Domains.TipoConsulta.Titulo">
+            <summary>
+            Titulo do tipo de consulta
+            </summary>
+        </member>
+        <member name="T:webapi.healthclinic.tarde2.Domains.TipoUsuario">
+            <summary>
+            Tabela de TipoUsuario
+            </summary>
+        </member>
+        <member name="P:webapi.healthclinic.tarde2.Domains.TipoUsuario.IdTipoUsuario">
+            <summary>
+            Primary Key de TipoUsuario
+            </summary>
+        </member>
+        <member name="P:webapi.healthclinic.tarde2.Domains.TipoUsuario.Titulo">
+            <summary>
+            Título do tipo de usuário
+            </summary>
+        </member>
+        <member name="T:webapi.healthclinic.tarde2.Domains.Usuario">
+            <summary>
+            Tabela de Usuario
+            </summary>
+        </member>
+        <member name="P:webapi.healthclinic.tarde2.Domains.Usuario.IdUsuario">
+            <summary>
+            Primary Key de Usuario
+            </summary>
+        </member>
+        <member name="P:webapi.healthclinic.tarde2.Domains.Usuario.Nome">
+            <summary>
+            Nome do usuário
+            </summary>
+        </member>
+        <member name="P:webapi.healthclinic.tarde2.Domains.Usuario.Email">
+            <summary>
+            Email do usuário
+            </summary>
+        </member>
+        <member name="P:webapi.healthclinic.tarde2.Domains.Usuario.Senha">
+            <summary>
+            Senha do usuário
+            </summary>
+        </member>
+        <member name="P:webapi.healthclinic.tarde2.Domains.Usuario.CPF">
+            <summary>
+            CPF do usuário
+            </summary>
+        </member>
+        <member name="P:webapi.healthclinic.tarde2.Domains.Usuario.DataNascimento">
+            <summary>
+            Data de nascimento do usuário
+            </summary>
+        </member>
+        <member name="P:webapi.healthclinic.tarde2.Domains.Usuario.IdTipoUsuario">
+            <summary>
+            Tipo de usuário
+            </summary>
+        </member>
+        <member name="P:webapi.healthclinic.tarde2.Domains.Usuario.TipoUsuario">
+            <summary>
+            Foreign Key - TipoUsuario
+            </summary>
+        </member>
+        <member name="T:webapi.healthclinic.tarde2.Interfaces.ITipoConsultaRepository">
+            <summary>
+            Interface responsável pelo repositório de TipoConsulta
+            </summary>
+        </member>
+        <member name="M:webapi.healthclinic.tarde2.Interfaces.ITipoConsultaRepository.Cadastrar(webapi.healthclinic.tarde2.Domains.TipoConsulta)">
+            <summary>
+            Cadastra tipos de consulta - Só Administrador
+            </summary>
+        </member>
+        <member name="M:webapi.healthclinic.tarde2.Interfaces.ITipoConsultaRepository.Deletar(System.Guid)">
+            <summary>
+            Deleta tipos de consulta - Só Administrador
+            </summary>
+        </member>
+        <member name="M:webapi.healthclinic.tarde2.Interfaces.ITipoConsultaRepository.Atualizar(System.Guid)">
+            <summary>
+            Atualiza tipos de consulta - Só Administrador
+            </summary>
+        </member>
+        <member name="M:webapi.healthclinic.tarde2.Interfaces.ITipoConsultaRepository.Listar">
+            <summary>
+            Lista tipos de consulta - Qualquer um
+            </summary>
+        </member>
+        <member name="T:webapi.healthclinic.tarde2.Migrations.Bd">
+            <inheritdoc />
+        </member>
+        <member name="M:webapi.healthclinic.tarde2.Migrations.Bd.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:webapi.healthclinic.tarde2.Migrations.Bd.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:webapi.healthclinic.tarde2.Migrations.Bd.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:webapi.healthclinic.tarde2.Repositories.TipoConsultaRepository">
+            <summary>
+            Repositório de TipoConsulta
+            </summary>
+        </member>
+        <member name="M:webapi.healthclinic.tarde2.Repositories.TipoConsultaRepository.#ctor">
+            <summary>
+            Usa o HealthContext
+            </summary>
+        </member>
+        <member name="M:webapi.healthclinic.tarde2.Repositories.TipoConsultaRepository.Atualizar(System.Guid)">
+            <summary>
+            Atualiza tipos de consulta
+            </summary>
+        </member>
+        <member name="M:webapi.healthclinic.tarde2.Repositories.TipoConsultaRepository.Cadastrar(webapi.healthclinic.tarde2.Domains.TipoConsulta)">
+            <summary>
+            Cadastra tipos de consulta
+            </summary>
+        </member>
+        <member name="M:webapi.healthclinic.tarde2.Repositories.TipoConsultaRepository.Deletar(System.Guid)">
+            <summary>
+            Deleta tipos de consulta
+            </summary>
+        </member>
+        <member name="M:webapi.healthclinic.tarde2.Repositories.TipoConsultaRepository.Listar">
+            <summary>
+            Lista tipos de consulta
+            </summary>
+        </member>
+        <member name="T:webapi.healthclinic.tarde2.Utils.Criptografia">
+            <summary>
+            Classe responsável pela criptografia
+            </summary>
+        </member>
+        <member name="M:webapi.healthclinic.tarde2.Utils.Criptografia.GerarHash(System.String)">
+            <summary>
+            Gera a hash para a criptografia
+            </summary>
+        </member>
+        <member name="M:webapi.healthclinic.tarde2.Utils.Criptografia.CompararHash(System.String,System.String)">
+            <summary>
+            Compara as hashs, tanto a original quanto a da senha
+            </summary>
+        </member>
+    </members>
+</doc>
