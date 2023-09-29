@@ -8,7 +8,7 @@ using webapi.healthclinic.tarde2.Interfaces;
 namespace webapi.healthclinic.tarde2.Controllers
 {
     /// <summary>
-    /// Controller de TipoUsuario
+    /// Controller de TipoConsulta
     /// </summary>
     [Route("api/[controller]")]
     [ApiController]
@@ -70,13 +70,32 @@ namespace webapi.healthclinic.tarde2.Controllers
         {
             try
             {
-                tipoConsultaRepository.Atualizar(tipoConsulta.IdTipoConsulta);
+                tipoConsultaRepository.Atualizar(tipoConsulta.IdTipoConsulta, tipoConsulta);
 
-                return NoContent();
+                return Ok();
             }
             catch (Exception e)
             {
                 return BadRequest(e.Message);
+            }
+        }
+
+
+        /// <summary>
+        /// Deletar
+        /// </summary>
+        [HttpDelete]
+        public IActionResult Delete(Guid id)
+        {
+            try
+            {
+                tipoConsultaRepository.Deletar(id);
+
+                return StatusCode(204);
+            }
+            catch (Exception)
+            {
+                throw;
             }
         }
     }

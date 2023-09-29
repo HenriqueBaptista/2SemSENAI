@@ -23,11 +23,19 @@ namespace webapi.healthclinic.tarde2.Repositories
         /// <summary>
         /// Atualiza tipos de consulta
         /// </summary>
-        public void Atualizar(Guid id)
+        public void Atualizar(Guid id, TipoConsulta tipoConsulta)
         {
-            TipoConsulta tipoConsulta = healthContext.TipoConsulta.FirstOrDefault(x => x.IdTipoConsulta == id)!;
+            TipoConsulta tipoConsultaBuscado = healthContext.TipoConsulta.Select(tc => new TipoConsulta
+            {
+                IdTipoConsulta = tc.IdTipoConsulta,
+                Titulo = tc.Titulo
+            }).FirstOrDefault(tc => tc.IdTipoConsulta == id)!;
+
+            tipoConsultaBuscado = tipoConsulta;
 
             healthContext.Update(tipoConsulta);
+
+            healthContext.SaveChanges();
         }
         
 
