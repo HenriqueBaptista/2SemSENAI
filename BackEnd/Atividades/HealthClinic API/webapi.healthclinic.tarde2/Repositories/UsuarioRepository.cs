@@ -1,6 +1,7 @@
 ﻿using webapi.healthclinic.tarde2.Contexts;
 using webapi.healthclinic.tarde2.Domains;
 using webapi.healthclinic.tarde2.Interfaces;
+using webapi.healthclinic.tarde2.Utils;
 
 namespace webapi.healthclinic.tarde2.Repositories
 {
@@ -31,6 +32,7 @@ namespace webapi.healthclinic.tarde2.Repositories
                 IdUsuario = u.IdUsuario,
                 Nome = u.Nome,
                 Email = u.Email,
+                Senha = u.Senha,
                 CPF = u.CPF
             }).FirstOrDefault(u => u.IdUsuario == id)!;
 
@@ -56,7 +58,10 @@ namespace webapi.healthclinic.tarde2.Repositories
                     Email = u.Email,
                     CPF = u.CPF,
 
-                    TipoUsuario = u.TipoUsuario
+                    TipoUsuario = new TipoUsuario
+                    {
+                        Titulo = u.TipoUsuario!.Titulo
+                    }
 
                 }).FirstOrDefault(u => u.IdUsuario == id)!;
 
@@ -71,12 +76,54 @@ namespace webapi.healthclinic.tarde2.Repositories
 
 
         /// <summary>
+        /// Busca usuários pelo email e senha
+        /// </summary>
+        public Usuario BuscarPorEmailESenha(string email, string senha)
+        {
+            try
+            {
+                Usuario usuarioBuscado = healthContext.Usuario.Select(u => new Usuario
+                {
+                    IdUsuario = u.IdUsuario,
+                    Nome = u.Nome,
+                    Email = u.Email,
+                    Senha = u.Senha,
+
+                    TipoUsuario = new TipoUsuario()
+                    {
+                        IdTipoUsuario = u.IdTipoUsuario,
+                        Titulo = u.TipoUsuario!.Titulo
+                    }
+                }
+                ).FirstOrDefault(u => u.Email! == email!)!;
+
+                if (usuarioBuscado != null)
+                {
+                    bool confere = Criptografia.CompararHash(senha, usuarioBuscado.Senha!);
+
+                    if (confere)
+                    {
+                        return usuarioBuscado;
+                    }
+                }
+
+                return null!;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        /// <summary>
         /// Cadastra usuários
         /// </summary>
         public void Cadastrar(Usuario usuario)
         {
             try
             {
+                usuario.Senha = Criptografia.GerarHash(usuario.Senha!);
+
                 healthContext.Usuario.Add(usuario);
 
                 usuario.TipoUsuario!.Titulo = "Sem permissão";
@@ -119,7 +166,20 @@ namespace webapi.healthclinic.tarde2.Repositories
         {
             try
             {
-                return healthContext.Usuario.ToList();
+                return healthContext.Usuario.Select(u => new Usuario
+                {
+                    IdUsuario = u.IdUsuario,
+                    Nome = u.Nome,
+                    Email = u.Email,
+                    Senha = u.Senha,
+                    CPF = u.CPF,
+                    DataNascimento = u.DataNascimento,
+
+                    TipoUsuario = new TipoUsuario
+                    {
+                        Titulo = u.TipoUsuario!.Titulo
+                    }
+                }).ToList();
             }
             catch (Exception)
             {

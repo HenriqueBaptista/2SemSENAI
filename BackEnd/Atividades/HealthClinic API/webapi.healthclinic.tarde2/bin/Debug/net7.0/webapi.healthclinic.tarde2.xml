@@ -134,6 +134,26 @@
             Deletar
             </summary>
         </member>
+        <member name="T:webapi.healthclinic.tarde2.Controllers.LoginController">
+            <summary>
+            Controller do método Login
+            </summary>
+        </member>
+        <member name="F:webapi.healthclinic.tarde2.Controllers.LoginController.usuarioRepository">
+            <summary>
+            Chamada da interface IUsuarioRepository
+            </summary>
+        </member>
+        <member name="M:webapi.healthclinic.tarde2.Controllers.LoginController.#ctor">
+            <summary>
+            Construtor do controller, chama o UsuarioRepository
+            </summary>
+        </member>
+        <member name="M:webapi.healthclinic.tarde2.Controllers.LoginController.Login(webapi.healthclinic.tarde2.ViewModels.LoginViewModel)">
+            <summary>
+            Logar
+            </summary>
+        </member>
         <member name="T:webapi.healthclinic.tarde2.Controllers.TipoConsultaController">
             <summary>
             Controller de TipoConsulta
@@ -564,11 +584,15 @@
             Busca usuários pelo Id
             </summary>
         </member>
+        <member name="M:webapi.healthclinic.tarde2.Interfaces.IUsuarioRepository.BuscarPorEmailESenha(System.String,System.String)">
+            <summary>
+            Busca usuários pelo email e senha
+            </summary>
+        </member>
         <member name="M:webapi.healthclinic.tarde2.Interfaces.IUsuarioRepository.Listar">
             <summary>
             Lista usuários
             </summary>
-            <returns></returns>
         </member>
         <member name="T:webapi.healthclinic.tarde2.Migrations.Db">
             <inheritdoc />
@@ -752,6 +776,11 @@
             Busca usuários pelo Id
             </summary>
         </member>
+        <member name="M:webapi.healthclinic.tarde2.Repositories.UsuarioRepository.BuscarPorEmailESenha(System.String,System.String)">
+            <summary>
+            Busca usuários pelo email e senha
+            </summary>
+        </member>
         <member name="M:webapi.healthclinic.tarde2.Repositories.UsuarioRepository.Cadastrar(webapi.healthclinic.tarde2.Domains.Usuario)">
             <summary>
             Cadastra usuários
@@ -805,6 +834,21 @@
         <member name="P:webapi.healthclinic.tarde2.ViewModels.CadastrarViewModel.CPF">
             <summary>
             CPF
+            </summary>
+        </member>
+        <member name="T:webapi.healthclinic.tarde2.ViewModels.LoginViewModel">
+            <summary>
+            ViewModel para o método Login
+            </summary>
+        </member>
+        <member name="P:webapi.healthclinic.tarde2.ViewModels.LoginViewModel.Email">
+            <summary>
+            Email do usuário
+            </summary>
+        </member>
+        <member name="P:webapi.healthclinic.tarde2.ViewModels.LoginViewModel.Senha">
+            <summary>
+            Senha do usuário
             </summary>
         </member>
         <member name="T:webapi.healthclinic.tarde2.ViewModels.ValidarUsuarioViewModel">

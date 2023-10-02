@@ -8,7 +8,7 @@
         /// <summary>
         /// Gera a hash para a criptografia
         /// </summary>
-        public static string? GerarHash(string senha)
+        public static string GerarHash(string senha)
         {
             return BCrypt.Net.BCrypt.HashPassword(senha);
         }

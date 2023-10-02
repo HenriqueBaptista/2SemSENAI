@@ -32,9 +32,14 @@ namespace webapi.healthclinic.tarde2.Interfaces
 
 
         /// <summary>
+        /// Busca usuários pelo email e senha
+        /// </summary>
+        Usuario BuscarPorEmailESenha(string email, string senha);
+
+
+        /// <summary>
         /// Lista usuários
         /// </summary>
-        /// <returns></returns>
         List<Usuario> Listar();
     }
 }
