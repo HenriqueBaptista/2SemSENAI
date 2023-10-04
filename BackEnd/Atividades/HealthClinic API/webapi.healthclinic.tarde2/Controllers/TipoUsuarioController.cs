@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Data;
 using webapi.healthclinic.tarde2.Domains;
 using webapi.healthclinic.tarde2.Interfaces;
 using webapi.healthclinic.tarde2.Repositories;
@@ -26,28 +28,10 @@ namespace webapi.healthclinic.tarde2.Controllers
 
 
         /// <summary>
-        /// Cadastrar
-        /// </summary>
-        [HttpPost]
-        public IActionResult Post(TipoUsuario tipoUsuario)
-        {
-            try
-            {
-                tipoUsuarioRepository.Cadastrar(tipoUsuario);
-
-                return StatusCode(201);
-            }
-            catch (Exception e)
-            {
-                return BadRequest(e.Message);
-            }
-        }
-
-
-        /// <summary>
         /// Listar
         /// </summary>
         [HttpGet]
+        [Authorize(Roles = "Administrador")]
         public IActionResult Get()
         {
             try
@@ -59,43 +43,5 @@ namespace webapi.healthclinic.tarde2.Controllers
                 return BadRequest(e.Message);
             }
         }
-
-
-        /// <summary>
-        /// Atualizar
-        /// </summary>
-        [HttpPut]
-        public IActionResult Put(TipoUsuario tipoUsuario)
-        {
-            try
-            {
-                tipoUsuarioRepository.Atualizar(tipoUsuario.IdTipoUsuario, tipoUsuario);
-
-                return Ok();
-            }
-            catch (Exception e)
-            {
-                return BadRequest(e.Message);
-            }
-        }
-
-
-        /// <summary>
-        /// Deletar
-        /// </summary>
-        [HttpDelete]
-        public IActionResult Delete(Guid id)
-        {
-            try
-            {
-                tipoUsuarioRepository.Deletar(id);
-
-                return StatusCode(204);
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-        }
     }
-}
+} // Completo

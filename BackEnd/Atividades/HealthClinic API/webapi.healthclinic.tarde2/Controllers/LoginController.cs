@@ -50,7 +50,7 @@ namespace webapi.healthclinic.tarde2.Controllers
                 {
                     new Claim(JwtRegisteredClaimNames.Jti, usuarioBuscado.IdUsuario.ToString()),
                     new Claim(JwtRegisteredClaimNames.Email, usuarioBuscado.Email!.ToString()),
-                    new Claim(ClaimTypes.Role, usuarioBuscado.IdTipoUsuario!.ToString()!),
+                    new Claim(ClaimTypes.Role, usuarioBuscado.TipoUsuario!.Titulo!.ToString()!),
                 };
 
                 var key = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes("login-chave-autenticacao-webapi-dev"));
@@ -80,4 +80,4 @@ namespace webapi.healthclinic.tarde2.Controllers
             }
         }
     }
-}
+} // Completo

@@ -74,5 +74,12 @@ namespace webapi.healthclinic.tarde2.Domains
         /// </summary>
         [ForeignKey(nameof(IdTipoUsuario))]
         public TipoUsuario? TipoUsuario { get; set; }
+
+
+        /// <summary>
+        /// Especialidade (caso seja médico)
+        /// </summary>
+        [Column(TypeName = "VARCHAR(70)")]
+        public string? Especialidade { get; set; }
     }
 }

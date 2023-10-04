@@ -61,7 +61,8 @@ namespace webapi.healthclinic.tarde2.Migrations
                     Senha = table.Column<string>(type: "VARCHAR(60)", maxLength: 60, nullable: false),
                     CPF = table.Column<string>(type: "VARCHAR(25)", nullable: false),
                     DataNascimento = table.Column<DateTime>(type: "DATE", nullable: false),
-                    IdTipoUsuario = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    IdTipoUsuario = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Especialidade = table.Column<string>(type: "VARCHAR(70)", nullable: true)
                 },
                 constraints: table =>
                 {

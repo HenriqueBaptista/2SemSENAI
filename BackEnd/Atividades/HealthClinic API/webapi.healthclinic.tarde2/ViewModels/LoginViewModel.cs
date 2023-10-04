@@ -10,14 +10,14 @@ namespace webapi.healthclinic.tarde2.ViewModels
         /// <summary>
         /// Email do usuário
         /// </summary>
-        [Required(ErrorMessage = "O email é obrigatório")]
+        [Required(ErrorMessage = "Email obrigatório!")]
         public string? Email { get; set; }
 
 
         /// <summary>
         /// Senha do usuário
         /// </summary>
-        [Required(ErrorMessage = "A senha é obrigatória")]
+        [Required(ErrorMessage = "Senha obrigatória!")]
         public string? Senha { get; set; }
     }
 }

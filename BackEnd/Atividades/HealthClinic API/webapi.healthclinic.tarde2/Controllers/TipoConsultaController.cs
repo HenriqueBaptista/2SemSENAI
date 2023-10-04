@@ -4,6 +4,8 @@ using Microsoft.IdentityModel.Tokens;
 using webapi.healthclinic.tarde2.Repositories;
 using webapi.healthclinic.tarde2.Domains;
 using webapi.healthclinic.tarde2.Interfaces;
+using Microsoft.AspNetCore.Authorization;
+using System.Data;
 
 namespace webapi.healthclinic.tarde2.Controllers
 {
@@ -30,6 +32,7 @@ namespace webapi.healthclinic.tarde2.Controllers
         /// Cadastrar
         /// </summary>
         [HttpPost]
+        [Authorize(Roles = "Administrador")]
         public IActionResult Post(TipoConsulta tipoConsulta)
         {
             try
@@ -49,6 +52,7 @@ namespace webapi.healthclinic.tarde2.Controllers
         /// Listar
         /// </summary>
         [HttpGet]
+        [Authorize(Roles = "Administrador")]
         public IActionResult Get()
         {
             try
@@ -66,6 +70,7 @@ namespace webapi.healthclinic.tarde2.Controllers
         /// Atualizar
         /// </summary>
         [HttpPut]
+        [Authorize(Roles = "Administrador")]
         public IActionResult Put(TipoConsulta tipoConsulta)
         {
             try
@@ -85,6 +90,7 @@ namespace webapi.healthclinic.tarde2.Controllers
         /// Deletar
         /// </summary>
         [HttpDelete]
+        [Authorize(Roles = "Administrador")]
         public IActionResult Delete(Guid id)
         {
             try

@@ -154,6 +154,9 @@ namespace webapi.healthclinic.tarde2.Migrations
                         .IsRequired()
                         .HasColumnType("VARCHAR(150)");
 
+                    b.Property<string>("Especialidade")
+                        .HasColumnType("VARCHAR(70)");
+
                     b.Property<Guid>("IdTipoUsuario")
                         .HasColumnType("uniqueidentifier");
 

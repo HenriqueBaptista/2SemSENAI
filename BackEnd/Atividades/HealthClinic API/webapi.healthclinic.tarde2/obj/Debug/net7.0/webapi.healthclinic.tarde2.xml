@@ -194,24 +194,9 @@
             Usa o repositório TipoUsuario
             </summary>
         </member>
-        <member name="M:webapi.healthclinic.tarde2.Controllers.TipoUsuarioController.Post(webapi.healthclinic.tarde2.Domains.TipoUsuario)">
-            <summary>
-            Cadastrar
-            </summary>
-        </member>
         <member name="M:webapi.healthclinic.tarde2.Controllers.TipoUsuarioController.Get">
             <summary>
             Listar
-            </summary>
-        </member>
-        <member name="M:webapi.healthclinic.tarde2.Controllers.TipoUsuarioController.Put(webapi.healthclinic.tarde2.Domains.TipoUsuario)">
-            <summary>
-            Atualizar
-            </summary>
-        </member>
-        <member name="M:webapi.healthclinic.tarde2.Controllers.TipoUsuarioController.Delete(System.Guid)">
-            <summary>
-            Deletar
             </summary>
         </member>
         <member name="T:webapi.healthclinic.tarde2.Controllers.UsuarioController">
@@ -432,6 +417,11 @@
         <member name="P:webapi.healthclinic.tarde2.Domains.Usuario.TipoUsuario">
             <summary>
             Foreign Key - TipoUsuario
+            </summary>
+        </member>
+        <member name="P:webapi.healthclinic.tarde2.Domains.Usuario.Especialidade">
+            <summary>
+            Especialidade (caso seja médico)
             </summary>
         </member>
         <member name="T:webapi.healthclinic.tarde2.Interfaces.IAgendamentoRepository">
@@ -809,6 +799,26 @@
         <member name="M:webapi.healthclinic.tarde2.Utils.Criptografia.CompararHash(System.String,System.String)">
             <summary>
             Compara as hashs, tanto a original quanto a da senha
+            </summary>
+        </member>
+        <member name="T:webapi.healthclinic.tarde2.ViewModels.CadastrarAgendamentoViewModel">
+            <summary>
+            ViewModel para o método Login
+            </summary>
+        </member>
+        <member name="P:webapi.healthclinic.tarde2.ViewModels.CadastrarAgendamentoViewModel.DiaAgendamento">
+            <summary>
+            Dia do agendamento
+            </summary>
+        </member>
+        <member name="P:webapi.healthclinic.tarde2.ViewModels.CadastrarAgendamentoViewModel.Paciente">
+            <summary>
+            Paciente
+            </summary>
+        </member>
+        <member name="P:webapi.healthclinic.tarde2.ViewModels.CadastrarAgendamentoViewModel.Médico">
+            <summary>
+            Médico
             </summary>
         </member>
         <member name="T:webapi.healthclinic.tarde2.ViewModels.CadastrarViewModel">

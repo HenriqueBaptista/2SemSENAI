@@ -12,7 +12,7 @@ using webapi.healthclinic.tarde2.Contexts;
 namespace webapi.healthclinic.tarde2.Migrations
 {
     [DbContext(typeof(HealthContext))]
-    [Migration("20230928182043_Db")]
+    [Migration("20231004174317_Db")]
     partial class Db
     {
         /// <inheritdoc />
@@ -156,6 +156,9 @@ namespace webapi.healthclinic.tarde2.Migrations
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("VARCHAR(150)");
+
+                    b.Property<string>("Especialidade")
+                        .HasColumnType("VARCHAR(70)");
 
                     b.Property<Guid>("IdTipoUsuario")
                         .HasColumnType("uniqueidentifier");

@@ -126,8 +126,6 @@ namespace webapi.healthclinic.tarde2.Repositories
 
                 healthContext.Usuario.Add(usuario);
 
-                usuario.TipoUsuario!.Titulo = "Sem permissão";
-
                 healthContext.SaveChanges();
             }
             catch (Exception)
