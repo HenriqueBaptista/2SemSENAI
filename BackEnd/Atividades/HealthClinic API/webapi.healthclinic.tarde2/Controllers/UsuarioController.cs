@@ -49,6 +49,7 @@ namespace webapi.healthclinic.tarde2.Controllers
         /// Listar
         /// </summary>
         [HttpGet]
+        [Authorize(Roles = "Administrador")]
         public IActionResult Get()
         {
             try

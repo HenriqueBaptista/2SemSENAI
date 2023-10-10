@@ -31,6 +31,7 @@ namespace webapi.healthclinic.tarde2.Controllers
         /// Cadastrar
         /// </summary>
         [HttpPost]
+        [Authorize(Roles = "Administrador")]
         public IActionResult Post(Consulta consulta)
         {
             try
@@ -50,7 +51,7 @@ namespace webapi.healthclinic.tarde2.Controllers
         /// Listar
         /// </summary>
         [HttpGet]
-        [Authorize(Roles = "Administrador")]
+        [Authorize(Roles = "Administrador")] [Authorize(Roles = "Médico")]
         public IActionResult Get()
         {
             try
