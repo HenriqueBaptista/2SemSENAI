@@ -23,7 +23,7 @@ console.log(`
 Marca: ${marca}
 Tamanho: ${tamanho}
 Promoção: ${promo ? "sim" : "não"}
-`); // Aquio promo fica numa condicional, se ele for true, receberá o valor "sim", senão, receberá o valor não
+`); // Aqui no promo fica numa condicional, se ele for true, receberá o valor "sim", senão, receberá o valor não
 
 
 

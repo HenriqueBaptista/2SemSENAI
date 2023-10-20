@@ -1,0 +1,37 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "imc": [
+    {
+      "id": 1,
+      "nome": "Henrique",
+      "altura": "1.80",
+      "peso": "70",
+      "situacao": "Peso Normal",
+      "imc": "Faço a menor ideia..."
+    },
+    {
+      "nome": "Lucas",
+      "altura": "1.79",
+      "peso": "65",
+      "situacao": "Peso Normal???",
+      "imc": "Faço a menor ideia...",
+      "id": 2
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}

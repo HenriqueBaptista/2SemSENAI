@@ -8,9 +8,10 @@
 </head>
 
 <body>
-    <<form onsubmit="chamarApi()">
+    <form onsubmit="chamarApi()">
         <label for="cep">CEP</label>
-        <input type="number" placeholder="Digite o cep..." id="cep">
+        <input type="number" placeholder="digite o cep" id="cep" onblur="chamarApi()">
+        <span id="not-found"></span>
         <br><br>
 
         <label for="endereco">Endereço</label>
@@ -28,15 +29,11 @@
         <label for="estado">Estado</label>
         <input type="text" placeholder="..." id="estado">
         <br><br>
-
-
-        <button>Chamar API</button>
     </form>
 
     <script>
-        async function chamarApi(event) {
-            event.preventDefault();
-            
+        async function chamarApi() {
+
             const cep = document.getElementById("cep").value;
             const url = `https://viacep.com.br/ws/${cep}/json/`;
 
@@ -44,10 +41,29 @@
                 const promise = await fetch(url);
                 const endereco = await promise.json();
 
-                console.log(endereco);
+                exibirEndereco(endereco);
+
             } catch (error) { // rejeitada
                 console.log("Deu ruim na api");
+
+                document.getElementById("not-found").innerText = "CEP Inválido!";
+
+                limparEndereco();
             }
+        }
+
+        function exibirEndereco(endereco) {
+            document.getElementById("endereco").value = endereco.logradouro;
+            document.getElementById("bairro").value = endereco.localidade;
+            document.getElementById("cidade").value = endereco.bairro;
+            document.getElementById("estado").value = endereco.uf;
+        }
+
+        function limparEndereco() {
+            document.getElementById("endereco").value = "";
+            document.getElementById("bairro").value = "";
+            document.getElementById("cidade").value = "";
+            document.getElementById("estado").value = "";
         }
     </script>
 </body>
