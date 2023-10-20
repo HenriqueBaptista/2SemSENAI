@@ -1,0 +1,45 @@
+CREATE DATABASE locadora_3_2
+
+USE locadora_3_2
+/*
+CREATE TABLE Marcas
+(
+IdMarca INT PRIMARY KEY IDENTITY,
+NomeMarca VARCHAR (20) NOT NULL,
+)
+
+CREATE TABLE Modelos
+(
+IdModelo INT PRIMARY KEY IDENTITY,
+NomeModelo VARCHAR(20) NOT NULL
+)
+
+CREATE TABLE Carros
+(
+IdCarro INT PRIMARY KEY IDENTITY,
+MarcaCarro INT FOREIGN KEY REFERENCES Marcas(IdMarca) NOT NULL,
+ModeloCarro INT FOREIGN KEY REFERENCES Modelos(IdModelo)NOT NULL,
+PlacaCarro VARCHAR(10) NOT NULL UNIQUE
+)
+*/
+
+SELECT * FROM Marcas
+SELECT * FROM Modelos
+SELECT * FROM Carros
+
+INSERT INTO Marcas(NomeMarca)
+VALUES
+('FORD'),
+('HONDA'),
+('FIAT')
+
+INSERT INTO Modelos(NomeModelo)
+VALUES
+('KA'),
+('CITY'),
+('UNO')
+
+INSERT INTO 
+Carros (MarcaCarro, ModeloCarro, PlacaCarro)
+VALUES
+(1, 1, '111 1111')
