@@ -1,48 +1,123 @@
-
-
-
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
 
 <body>
-    <button onclick="chamarApi()">Chamar API</button>
+    <form onsubmit="cadastrar(event)">
+        <label for="cep">CEP</label>
+        <input type="number" placeholder="Digite o cep" id="cep" onblur="chamaApi()" autocomplete="off" />
+        <span id="not-found"></span>
+        <br /><br />
+
+        <label for="endereco">Endereço</label>
+        <input type="text" placeholder=" ... " id="endereco" />
+        <br /><br />
+
+        <label for="bairro">Bairro</label>
+        <input type="text" placeholder=" ... " id="bairro" />
+        <br /><br />
+
+        <label for="cidade">Cidade</label>
+        <input type="text" placeholder=" ... " id="cidade" />
+        <br /><br />
+
+        <label for="estado">Estado</label>
+        <input type="text" placeholder=" ... " id="estado" />
+        <br /><br />
+
+        <label for="nome">Nome</label>
+        <input type="text" placeholder=" ... " id="nome">
+        <br /><br />
+        
+        <label for="telefone">Telefone</label>
+        <input type="number" placeholder=" ... " id="telefone">
+        <br /><br />
+
+        <label for="numeroCasa">Número da casa</label>
+        <input type="number" placeholder=" ... " id="numeroCasa">
+        <br /><br />
+
+        <button>Salvar Contato</button>
+    </form>
 
     <script>
-        // vai na Api, que retorna uma promisse. Que tem 2 status: a promisse pode ser fulfield ou rejected e inicialmente tem o status como  pending
-        // Então o fetch receberá essa promisse inicialmente provavelmente vazia, pois pode demorar para realizar o processamento e retorno da api. Fazendo com que ao a promisse ficar pronta, o fetch receberá o retorno
-        // const retorno = fetch("https://viacep.com.br/ws/01311923/json/")
-        //     .then((retorno) => {
-        //         console.log("Api aceita e retornada!");
-        //         console.log(retorno);
-        //     }) // resolvida
-        //     .catch(() => {
-        //         console.log("Api rejeitada!");
-        //     }); // rejeitada
 
-        // console.log("Retornado primeiro.");
 
-        // função assíncrona
-        async function chamarApi() {
-            const url = "https://viacep.com.br/ws/01311923/json/";
+        const url = "http://localhost:3000/contato"
 
-            try { // resolvida ou fullfiled
-                const promise = await fetch(url);
-                const endereco = await promise.json();
+        //async define que a função será assincrona / await faz com que a const aguarde
+        async function chamaApi() {
+            const cep = document.getElementById("cep").value;
+            const urlcep = `https://viacep.com.br/ws/${cep}/json/`;
 
-                console.log(endereco);
-            } catch (error) { // rejeitada
+            try {//resolvida ou fullfiled
+                const promise = await fetch(urlcep);
+                const endereco = await promise.json(); // Extrai seu json
+
+                exibeEndereco(endereco);
+
+                console.log(endereco)
+                document.getElementById("not-found").innerText = "";
+
+            }
+            catch (error) {
+                //rejeitada 
                 console.log("Deu ruim na api");
+
+                //informa o Usuario
+                document.getElementById("not-found").innerText = "Cep Invalido!";
+                apagaEndereco();
+            }
+
+
+        }
+
+        async function cadastrar(e) {
+            e.preventDefault(); // Evitar captura do evento de submit do form
+
+            let cep = document.getElementById("cep").value;
+            let endereco = document.getElementById("endereco").value;
+            let bairro = document.getElementById("bairro").value;
+            let cidade = document.getElementById("cidade").value;
+            let estado = document.getElementById("estado").value;
+            let nome = document.getElementById("nome").value;
+            let telefone = document.getElementById("telefone").value;
+            let numeroCasa = document.getElementById("numeroCasa").value;
+
+            const contato = { cep, endereco, bairro, cidade, estado, nome, telefone, numeroCasa };
+
+            try {
+                const promise = await fetch(url, {
+                    // transforma um objeto em json
+                    body: JSON.stringify(contato),
+                    headers: { "Content-Type": "application/json" },
+                    method: "post"
+                });
+
+                const retorno = promise.json(); // pega o retorno da api
+                console.log(retorno);
+
+            } catch (error) {
+                alert(`Um erro ocorreu: ${error}`)
             }
         }
+
+        function exibeEndereco(endereco) {
+            document.getElementById("endereco").value = endereco.logradouro;
+            document.getElementById("bairro").value = endereco.bairro;
+            document.getElementById("cidade").value = endereco.localidade;
+            document.getElementById("estado").value = endereco.uf;
+        }
+        // function apagaEndereco() {
+        //     document.getElementById("endereco").value = "";
+        //     document.getElementById("bairro").value = "";
+        //     document.getElementById("cidade").value = "";
+        //     document.getElementById("estado").value = "";
+        // }
     </script>
 </body>
-
-</html>
