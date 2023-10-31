@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap');
+
+.card {
+    display: block;
+    width: 250px;
+    height: 250px;
+
+    align-items: center;
+    justify-content: center;
+
+    border: 2px solid brown;
+    border-radius: 5px;
+}
+
+.card__texto {
+    color: black;
+    text-align: center;
+    font-family: Poppins;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+}
+
+.card__texto--titulo {
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.card__button {
+    color: brown;
+    font-family: Poppins;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+
+    background: none;
+    border: none;
+}
+
+.card__button::hover {
+    opacity: .8;
+}
+
+.card__button--lightgray {
+    color: lightgrey;
+
+    position: relative;
+    top: 50px;
+}
