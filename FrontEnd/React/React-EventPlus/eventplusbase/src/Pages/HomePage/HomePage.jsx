@@ -20,7 +20,6 @@ const HomePage = () => {
                     "http://localhost:5000/api/Evento/ListarProximos"
                 );
                 console.log(promise.data);
-                setNextEvents(promise.data);
             } catch (error) {
                 console.error("Erro : " + error);
                 alert("Erro ao carregar os eventos");
