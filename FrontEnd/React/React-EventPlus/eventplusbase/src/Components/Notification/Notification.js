@@ -6,7 +6,7 @@ import React, { useEffect } from "react";
 import successIlustrator from "../../assets/images/success-illustration.svg";
 import warningIlustrator from "../../assets/images/warning-illustration.svg";
 import dangerIllustrator from "../../assets/images/error-illustration.svg";
-import defaultIllustrator from "../../assets/images/default-image.jpeg";
+import defaultIllustrator from "../../assets/images/default-image.jpg";
 
 import "./Notification.css";
 

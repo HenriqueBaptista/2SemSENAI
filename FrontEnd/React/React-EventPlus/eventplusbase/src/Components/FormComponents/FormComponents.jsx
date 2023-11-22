@@ -4,6 +4,7 @@ import './FormComponents.css'
 export const Input = ({
     type,
     id,
+    name,
     required,
     additionalClass = '',
     placeholder,
@@ -13,6 +14,7 @@ export const Input = ({
         <input
             type={type}
             id={id}
+            name={name}
             required={required}
             className={`input-component ${additionalClass}`}
             placeholder={placeholder}
@@ -27,7 +29,8 @@ export const Button = ({
     id,
     name,
     type,
-    additionalClass = ""
+    additionalClass = "",
+    manipulationFunction
 }) => {
     return (
         <button
@@ -35,7 +38,9 @@ export const Button = ({
             name={name}
             id={id}
             className={`button-component ${additionalClass}`
-            }>
+            }
+            onClick={manipulationFunction}
+        >
             {textButton}
         </button>
     )
