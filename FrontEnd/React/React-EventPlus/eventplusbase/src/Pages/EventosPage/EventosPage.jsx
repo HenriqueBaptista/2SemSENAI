@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './EventosPage.css'
 
 import Spinner from '../../Components/Spinner/Spinner';
-import { Input, Button } from '../../Components/FormComponents/FormComponents';
+import { Input, Button, Select } from '../../Components/FormComponents/FormComponents';
 import Title from '../../Components/Title/Title';
 import Notification from '../../Components/Notification/Notification';
 import TableTe from '../EventosPage/TableTe/TableTe';
@@ -10,7 +10,6 @@ import MainContent from '../../Components/MainContent/MainContext';
 import ImageIllustrator from '../../Components/ImageIlustrator/ImageIllustrator';
 import Container from '../../Components/Container/Container';
 import api from '../../Services/Service';
-import axios from 'axios';
 import eventImage from '../../assets/images/evento.svg';
 
 const EventosPage = () => {
@@ -22,6 +21,10 @@ const EventosPage = () => {
     const [nomeEvento, setNomeEvento] = useState("");
     const [descricao, setDescricao] = useState("");
     const [idEvento, setIdEvento] = useState(null);
+    const [tiposEvento, setTiposEvento] = useState(null);
+    const [dataEvento, setDataEvento] = useState("");
+    const [idTiposEvento, setIdTiposEvento] = useState(null);
+    const [idInstituicao, setIdInstituicao] = useState(null)
 
     useEffect(() => {
         //chamar a api
@@ -29,10 +32,12 @@ const EventosPage = () => {
             setShowSpinner(true);
 
             try {
-                const promise = await axios.get(
-                    "http://localhost:5000/api/Evento"
-                );
+                const promise = await api.get("/Evento");
+
+                const promise1 = await api.get("/TiposEvento")
+
                 await setEventos(promise.data);
+                await setTiposEvento(promise1.data);
             } catch (error) {
                 console.error("Erro : " + error);
                 alert("Erro ao carregar os eventos");
@@ -64,15 +69,60 @@ const EventosPage = () => {
         setIdEvento(null);
     }
 
-    function handleSubmit() {
+    async function handleSubmit(e) {
+        // parar o submit do formulário
+        e.preventDefault();
+        // validar pelo menos 3 caracteres
+        if (nomeEvento.trim().length < 3) {
+            setNotfyUser({
+                titleNote: "Caracteres insuficientes!",
+                textNote: "São necessários pelo menos 3 caracteres!",
+                imgIcon: "default",
+                imgAlt: "Icone da ilustração - Erro",
+                showMessage: true
+            });
 
+            return null;
+        }
+        // chamar a api
+        try {
+            const retorno = await api.post("/Evento", {
+                nomeEvento: nomeEvento,
+                descricao: descricao,
+                tiposEvento: tiposEvento,
+                dataEvento: dataEvento,
+                idInstituicao : idInstituicao
+            })
+            setNotfyUser({
+                titleNote: "Cadastro bem sucedido!",
+                textNote: "Tipo evento cadastrado com sucesso!",
+                imgIcon: "default",
+                imgAlt: "Icone da ilustração - Sucesso",
+                showMessage: true
+            });
+            setNomeEvento(""); //limpa a variável
+
+            const retornoGet = await api.get('/Evento')
+
+            console.log(retorno.data)
+
+            setEventos(retornoGet.data)
+        } catch (error) {
+            setNotfyUser({
+                titleNote: "Cadastro não sucedido",
+                textNote: "Tipo evento não cadastrado, tente novamente!",
+                imgIcon: "default",
+                imgAlt: "Icone da ilustração - Erro",
+                showMessage: true
+            });
+        }
     }
 
     function handleUpdate() {
 
     }
 
-    function handleDelete() {
+    async function handleDelete() {
 
     }
 
@@ -119,14 +169,19 @@ const EventosPage = () => {
                                         placeholder={"Descrição"}
                                         required={"required"}
                                         value={descricao}
+                                        manipulationFunction={(e) => {
+                                            setDescricao(e.target.value);
+                                        }}
                                     />
 
-                                    <Input
-                                        type={"text"}
-                                        id={"tipoEvento"}
-                                        name={"tipoEvento"}
-                                        placeholder={"Tipo Evento"}
+                                    <Select
+                                        id={"tiposEvento"}
+                                        name={"tiposEvento"}
                                         required={"required"}
+                                        defaultValue={tiposEvento}
+                                        manipulationFunction={(e) => {
+                                            setTiposEvento(e.target.value)
+                                        }}
                                     />
 
                                     <Input
@@ -142,7 +197,7 @@ const EventosPage = () => {
                                         id={"cadastrar"}
                                         name={"cadastrar"}
                                         textButton={"Cadastrar"}
-                                        manipulationFunction={showUpdateForm}
+                                        manipulationFunction={handleSubmit}
                                     />
                                 </>
                             ) : (
@@ -155,7 +210,7 @@ const EventosPage = () => {
                                         required={"required"}
                                         value={nomeEvento}
                                         manipulationFunction={(e) => {
-                                            setNomeEvento(`Novo evento: ${e.target.value}`);
+                                            setNomeEvento(e.target.value);
                                         }}
                                     />
 
@@ -167,12 +222,14 @@ const EventosPage = () => {
                                         required={"required"}
                                     />
 
-                                    <Input
-                                        type={"text"}
-                                        id={"tipoEvento"}
-                                        name={"tipoEvento"}
-                                        placeholder={"Tipo Evento"}
+                                    <Select
+                                        id={"tiposEvento"}
+                                        name={"tiposEvento"}
                                         required={"required"}
+                                        defaultValue={tiposEvento}
+                                        manipulationFunction={(e) => {
+                                            setTiposEvento(e.target.value)
+                                        }}
                                     />
 
                                     <Input

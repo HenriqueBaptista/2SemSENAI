@@ -10,8 +10,10 @@ const TableTe = ({ dados, fnUpdate, fnDelete }) => {
         <table className='table-data'>
             <thead className="table-data__head">
                 <tr className="table-data__head-row">
-                    <th className="table-data__head-title table-data__head-title--big">Título</th>
+                    <th className="table-data__head-title table-data__head-title--big">Evento</th>
+                    <th className="table-data__head-title table-data__head-title--big">Descrição</th>
                     <th className="table-data__head-title table-data__head-title--big">Tipo de evento</th>
+                    <th className="table-data__head-title table-data__head-title--big">Data</th>
                     <th className="table-data__head-title table-data__head-title--little">Editar</th>
                     <th className="table-data__head-title table-data__head-title--little">Deletar</th>
                 </tr>
@@ -25,10 +27,10 @@ const TableTe = ({ dados, fnUpdate, fnDelete }) => {
                     return (
                         <tr className="table-data__head-row">
                             <td className="table-data__data table-data__data--big">
-                                <div className="table-data__data--element">{te.nomeEvento}</div>
-                                <div className="table-data__data--element">{te.descricao} </div>
-                                <div className="table-data__data--element">{te.tiposEvento.titulo}</div>
-                                <div className="table-data__data--element">{new Date(te.dataEvento).toLocaleDateString()}</div>
+                                <th className="table-data__data--element">{te.nomeEvento}</th>
+                                <th className="table-data__data--element">{te.descricao} </th>
+                                <th className="table-data__data--element">{te.tiposEvento.titulo}</th>
+                                <th className="table-data__data--element">{new Date(te.dataEvento).toLocaleDateString()}</th>
                             </td>
 
                             <td className="table-data__data table-data__data--little">

@@ -71,6 +71,7 @@ const TipoEventosPage = () => {
                 showMessage: true
             });
             setTitulo(""); //limpa a variável
+            console.log(retorno.data)
 
             const retornoGet = await api.get('/TiposEvento')
             setTipoEventos(retornoGet.data)
@@ -94,6 +95,9 @@ const TipoEventosPage = () => {
             })
 
             const retornoGet = await api.get('/TiposEvento')
+
+            console.log(retorno.data)
+
             setTipoEventos(retornoGet.data)
         } catch (error) {
             alert("Problemas na atualização. Verifique a conexão com a internet!")
@@ -128,6 +132,9 @@ const TipoEventosPage = () => {
             });
 
             const retornoGet = await api.get('/TiposEvento')
+
+            console.log(retorno.data)
+
             setTipoEventos(retornoGet.data)
         } catch (error) {
             console.log("Erro ao excluir");
@@ -179,7 +186,7 @@ const TipoEventosPage = () => {
                                         id={"cadastrar"}
                                         name={"cadastrar"}
                                         textButton={"Cadastrar"}
-                                        manipulationFunction={showUpdateForm}
+                                        manipulationFunction={handleSubmit}
                                     />
                                 </>
                             ) : (
