@@ -5,7 +5,7 @@ import editPen from "../../../assets/images/edit-pen.svg";
 import trashCan from "../../../assets/images/trash-delete.svg";
 
 
-const TableTe = ({ dados, fnUpdate, fnDelete }) => {
+const TableTe = ({ dados , fnUpdate, fnDelete }) => {
     return (
         <table className='table-data'>
             <thead className="table-data__head">

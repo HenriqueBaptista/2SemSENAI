@@ -91,6 +91,7 @@ namespace webapi.event_.Repositories
             {
                 return _context.Evento.Select(e => new Evento
                 {
+                    IdEvento = e.IdEvento,
                     NomeEvento = e.NomeEvento,
                     Descricao = e.Descricao,
 
