@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 
 
 import ImageIllustrator from "../../Components/ImageIlustrator/ImageIllustrator";
@@ -10,10 +10,16 @@ import api from "../../Services/Service";
 
 import "./LoginPage.css";
 import { UserContext, userDecodeToken } from "../../context/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 const LoginPage = () => {
     // Dados globais do formulário
     const { userData, setUserData } = useContext(UserContext)
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (userData.name) navigate("/");
+    }, [userData]);
 
     const [user, setUser] = useState({
         email: "",
@@ -32,8 +38,11 @@ const LoginPage = () => {
                 })
 
                 const userFullToken = userDecodeToken(promise.data.token);
+
                 setUserData(userFullToken); //Guarda os dados modificados (payload)
-                console.log(userData);
+                localStorage.setItem("token", JSON.stringify(userFullToken));
+
+                navigate("/") // Manda o usuário para a home
 
             } catch (error) {
                 alert("Usuário e senha inválidos ou conexão com a internet interrompida")
