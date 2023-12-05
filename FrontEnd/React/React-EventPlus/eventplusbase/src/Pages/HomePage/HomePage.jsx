@@ -27,7 +27,6 @@ const HomePage = () => {
         }
 
         getProximosEventos();
-        console.log("A HOME FOI MONTADA!")
     }, []);
 
     // fake mock - api mocada

@@ -35,12 +35,22 @@ const EventosPage = () => {
             try {
                 const promise = await api.get("/Evento");
 
-                const promise1 = await api.get("/TiposEvento");
+                const retornoTiposDeEvento = await api.get("/TiposEvento");
 
                 const promise2 = await api.get("/Instituicao");
 
+                let arrayGenerico = [];
+
+                retornoTiposDeEvento.data.forEach((tp) => {
+                    arrayGenerico.push({
+                        value: tp.idTipoEvento,
+                        text: tp.titulo
+                    })
+                });
+
+
                 setEventos(promise.data);
-                setTiposEvento(promise1.data);
+                setTiposEvento(arrayGenerico);
                 setInstituicao(promise2.data);
             } catch (error) {
                 console.error("Erro : " + error);
