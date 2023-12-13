@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "apis1": {
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.ApiManagement/service/henrique-eventplus-managementservice/apis/henrique-eventplus-api",
+      "type": "apis.azure"
+    }
+  }
+}
