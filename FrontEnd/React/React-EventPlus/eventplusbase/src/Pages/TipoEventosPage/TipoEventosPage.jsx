@@ -9,7 +9,6 @@ import Container from "../../Components/Container/Container";
 import { Input, Button } from "../../Components/FormComponents/FormComponents";
 import api from "../../Services/Service";
 import TableTb from "./TableTb/TableTb";
-import axios from "axios";
 import Spinner from "../../Components/Spinner/Spinner"
 import Notification from "../../Components/Notification/Notification"
 
@@ -28,20 +27,24 @@ const TipoEventosPage = () => {
             setShowSpinner(true);
 
             try {
-                const promise = await axios.get(
-                    "http://localhost:5000/api/TiposEvento"
-                );
+                const promise = await api.get("/TiposEvento");
+
                 await setTipoEventos(promise.data);
             } catch (error) {
-                console.error("Erro : " + error);
-                alert("Erro ao carregar os tipos de evento");
+                setNotfyUser({
+                    titleNote: "Erro",
+                    textNote: "Não foi possível retornar os tipos de evento. Verifique usa conexão com a internet e tente novamente",
+                    imgIcon: "danger",
+                    imgAlt: "Icone da ilustração - Erro",
+                    showMessage: true
+                });
             }
 
             setShowSpinner(false);
         }
 
         getTipoEventos();
-        console.log("A TIPO EVENTOS FOI MONTADA!")
+        console.log("A TIPO EVENTOS FOI MONTADA!");
     }, []);
 
 
@@ -53,7 +56,7 @@ const TipoEventosPage = () => {
             setNotfyUser({
                 titleNote: "Caracteres insuficientes!",
                 textNote: "São necessários pelo menos 3 caracteres!",
-                imgIcon: "default",
+                imgIcon: "danger",
                 imgAlt: "Icone da ilustração - Erro",
                 showMessage: true
             });
@@ -64,9 +67,9 @@ const TipoEventosPage = () => {
         try {
             const retorno = await api.post("/TiposEvento", { titulo: titulo })
             setNotfyUser({
-                titleNote: "Cadastro bem sucedido!",
-                textNote: "Tipo evento cadastrado com sucesso!",
-                imgIcon: "default",
+                titleNote: "Cadastro bem sucedido",
+                textNote: "Tipo evento cadastrado com sucesso",
+                imgIcon: "success",
                 imgAlt: "Icone da ilustração - Sucesso",
                 showMessage: true
             });
@@ -78,8 +81,8 @@ const TipoEventosPage = () => {
         } catch (error) {
             setNotfyUser({
                 titleNote: "Cadastro não sucedido",
-                textNote: "Tipo evento não cadastrado, tente novamente!",
-                imgIcon: "default",
+                textNote: "Tipo evento não cadastrado, tente novamente",
+                imgIcon: "danger",
                 imgAlt: "Icone da ilustração - Erro",
                 showMessage: true
             });
@@ -99,8 +102,13 @@ const TipoEventosPage = () => {
             console.log(retorno.data)
 
             setTipoEventos(retornoGet.data)
-        } catch (error) {
-            alert("Problemas na atualização. Verifique a conexão com a internet!")
+        } catch (error) {setNotfyUser({
+            titleNote: "Falha na atualização",
+            textNote: "Não foi possível atualizar o tipo de evento. Verifique sua conexão com a internet e tente novamente",
+            imgIcon: "danger",
+            imgAlt: "Icone da ilustração - Erro",
+            showMessage: true
+        });
         }
     }
 
@@ -124,7 +132,7 @@ const TipoEventosPage = () => {
             const retorno = await api.delete(`/TiposEvento/${idEvento}`)
 
             setNotfyUser({
-                titleNote: "Deletado com sucesso!",
+                titleNote: "Deletado com sucesso",
                 textNote: "Tipo evento foi deletado com sucesso!",
                 imgIcon: "default",
                 imgAlt: "Icone da ilustração - Sucesso",

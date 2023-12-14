@@ -83,9 +83,7 @@ namespace webapi.event_.Controllers
         {
             try
             {
-
                 return Ok(comentarios.ListarSomenteExibe());
-
             }
             catch (Exception e)
             {
@@ -98,9 +96,7 @@ namespace webapi.event_.Controllers
         {
             try
             {
-
                 return Ok(comentarios.Listar());
-
             }
             catch (Exception e)
             {

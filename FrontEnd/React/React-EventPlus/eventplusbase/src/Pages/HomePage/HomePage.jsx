@@ -9,16 +9,15 @@ import NextEvent from '../../Components/NextEvent/NextEvent';
 import VisionSection from '../../Components/VisionSection/VisionSection';
 import ContactSection from '../../Components/ContactSection/ContactSection'
 
-import axios from 'axios';
+import api from '../../Services/Service';
 
 const HomePage = () => {
     useEffect(() => {
         //chamar a api
         async function getProximosEventos() {
             try {
-                const promise = await axios.get(
-                    "http://localhost:5000/api/Evento/ListarProximos"
-                );
+                const promise = await api.get("/Evento/ListarProximos");
+                
                 console.log(promise.data);
             } catch (error) {
                 console.error("Erro : " + error);

@@ -24,7 +24,7 @@ const EventosPage = () => {
     const [tiposEvento, setTiposEvento] = useState([]);
     const [dataEvento, setDataEvento] = useState("");
     const [idTiposEvento, setIdTiposEvento] = useState(null);
-    const [idInstituicao, setIdInstituicao] = useState("fb4748e1-614f-44bc-8e09-410411b16494");
+    const [idInstituicao, setIdInstituicao] = useState("87531c8d-16e8-4966-840f-9cf612f6588d");
     const [instituicao, setInstituicao] = useState(null);
 
     useEffect(() => {

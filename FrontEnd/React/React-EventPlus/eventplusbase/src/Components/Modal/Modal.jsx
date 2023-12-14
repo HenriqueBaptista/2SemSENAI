@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import trashDelete from "../../assets/images/trash-delete-red.png";
 
 import { Button, Input } from "../FormComponents/FormComponents";
@@ -7,11 +7,10 @@ import "./Modal.css";
 const Modal = ({
     modalTitle = "Feedback",
     comentaryText,
-    userId = null,
     showHideModal = false,
     fnGet = null,
     fnPost = null,
-    fnDelete = null,
+    fnDelete = (null),
     fnNewCommentary = null
 
 }) => {
@@ -55,9 +54,10 @@ const Modal = ({
                     additionalClass="comentary__button"
                     manipulationFunction={(e) => {
                         if (e.descricao == null) {
-                            fnPost(
-                                e.descricao
-                            )
+                            fnPost();
+                        }
+                        else {
+                            fnNewCommentary();
                         }
                     }}
                 />

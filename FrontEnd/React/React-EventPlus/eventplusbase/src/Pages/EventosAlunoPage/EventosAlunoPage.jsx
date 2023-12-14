@@ -23,6 +23,7 @@ const EventosAlunoPage = () => {
     const [tipoEvento, setTipoEvento] = useState("1"); //código do tipo do Evento escolhido
     const [showSpinner, setShowSpinner] = useState(false);
     const [showModal, setShowModal] = useState(false);
+    const [comentario, setComentario] = useState("");
 
     // recupera os dados globais do usuário
     const { userData } = useContext(UserContext);
@@ -90,19 +91,23 @@ const EventosAlunoPage = () => {
     }
 
     // Lê os comentários
-    async function loadMyComentary() {
-        
+    const loadMyComentary = async () => {
+        const promiseToRead = await api.get("")
     }
 
     // Cadastra o comentário
-    async function submitMyComentary() {
-        alert("Cadastra o comentário")
+    const submitMyComentary = async () => {
+
     }
 
     // Remove o comentário - Delete
     const commentaryRemove = async () => {
         alert("Remove o comentário");
     };
+
+    const updateMyComentary = async () => {
+
+    }
 
     const showHideModal = () => {
         setShowModal(showModal ? false : true);
@@ -176,8 +181,10 @@ const EventosAlunoPage = () => {
                 <Modal
                     userId={userData.userId}
                     showHideModal={showHideModal}
+                    comentaryText={comentario}
                     fnGet={loadMyComentary}
                     fnPost={submitMyComentary}
+                    fnNewCommentary={updateMyComentary}
                     fnDelete={commentaryRemove}
                 />
             ) : null}
