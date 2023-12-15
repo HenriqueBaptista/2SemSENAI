@@ -11,5 +11,5 @@ export const userDecodeToken = (theToken) => {
         name: decoded.name,
         userId: decoded.jti,
         token: theToken
-    }
-}
+    };
+};

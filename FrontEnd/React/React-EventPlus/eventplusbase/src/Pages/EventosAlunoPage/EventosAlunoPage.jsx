@@ -24,6 +24,7 @@ const EventosAlunoPage = () => {
     const [showSpinner, setShowSpinner] = useState(false);
     const [showModal, setShowModal] = useState(false);
     const [comentario, setComentario] = useState("");
+    const [idEvento, setIdEvento] = useState(null)
 
     // recupera os dados globais do usuário
     const { userData } = useContext(UserContext);
@@ -91,8 +92,10 @@ const EventosAlunoPage = () => {
     }
 
     // Lê os comentários
-    const loadMyComentary = async () => {
-        const promiseToRead = await api.get("")
+    const loadMyComentary = async (idEvent) => {
+        const promiseToRead = await api.get(`ComentariosEvento/BuscarPorIdUsuario?idUsuario=${userData.userId}&idEvento=922684a2-f858-4c3d-ac45-118b005529ad`);
+
+        setComentario(promiseToRead.data.descricao)
     }
 
     // Cadastra o comentário
@@ -148,7 +151,8 @@ const EventosAlunoPage = () => {
                 console.log(error);
             }
         }
-    }
+    };
+    
     return (
         <>
             <MainContent>

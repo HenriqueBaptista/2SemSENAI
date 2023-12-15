@@ -21,17 +21,10 @@ namespace webapi.event_.Controllers
         /// </summary>
         private readonly ContentModeratorClient _contentModeratorClient;
 
-        public ComentariosEventoController()
-        {
-            comentarios = new ComentariosEventoRepository();
-        }
-
-        /// <summary>
-        /// Construtor que recebe os dados necessários para o acesso ao serviço externo
-        /// </summary>
-        /// <param name="contentModeratorClient">Objeto do tipo ContentModeratorClient</param>
         public ComentariosEventoController(ContentModeratorClient contentModeratorClient)
         {
+            comentarios = new ComentariosEventoRepository();
+
             _contentModeratorClient = contentModeratorClient;
         }
 
@@ -78,6 +71,7 @@ namespace webapi.event_.Controllers
             }
         }
 
+
         [HttpGet("ListarIa")]
         public IActionResult GetIa()
         {
@@ -90,6 +84,7 @@ namespace webapi.event_.Controllers
                 return BadRequest(e.Message);
             }
         }
+
 
         [HttpGet]
         public IActionResult Listar()
@@ -104,12 +99,13 @@ namespace webapi.event_.Controllers
             }
         }
 
-        [HttpGet("BuscarPorIdUsuario/{id}")]
-        public IActionResult ListarPorUsuario(Guid id, Guid idEvento)
+
+        [HttpGet("BuscarPorIdUsuario")]
+        public IActionResult ListarPorUsuario(Guid idUsuario, Guid idEvento)
         {
             try
             {
-                ComentariosEvento comentarioBuscado = comentarios.BuscarPorIdUsuario(id, idEvento);
+                ComentariosEvento comentarioBuscado = comentarios.BuscarPorIdUsuario(idUsuario, idEvento);
 
                 if (comentarioBuscado == null)
                 {
@@ -126,20 +122,7 @@ namespace webapi.event_.Controllers
             }
         }
 
-        [HttpPost]
-        public IActionResult Postar(ComentariosEvento novoComentario)
-        {
-            try
-            {
-                comentarios.Cadastrar(novoComentario);
-                return StatusCode(201, novoComentario);
-            }
-            catch (Exception e)
-            {
-                return BadRequest(e.Message);
-            }
-        }
-
+        
         [HttpDelete("{id}")]
         public IActionResult Deletar(Guid id)
         {

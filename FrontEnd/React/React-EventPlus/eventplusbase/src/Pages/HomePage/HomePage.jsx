@@ -1,63 +1,71 @@
-import React, { useEffect, useState } from 'react';
-import './HomePage.css';
-
-import MainContent from '../../Components/MainContent/MainContext';
-import Banner from '../../Components/Banner/Banner';
-import Container from '../../Components/Container/Container'
-import Title from '../../Components/Title/Title';
-import NextEvent from '../../Components/NextEvent/NextEvent';
-import VisionSection from '../../Components/VisionSection/VisionSection';
-import ContactSection from '../../Components/ContactSection/ContactSection'
-
-import api from '../../Services/Service';
+import React, { useContext, useEffect, useState } from "react";
+import './HomePage.css'
+import MainContent from "../../Components/MainContent/MainContext";
+import Banner from "../../Components/Banner/Banner";
+import VisionSection from "../../Components/VisionSection/VisionSection";
+import ContactSection from "../../Components/ContactSection/ContactSection";
+import NextEvent from "../../Components/NextEvent/NextEvent";
+import Title from "../../Components/Title/Title";
+import Container from "../../Components/Container/Container";
+import api from "../../Services/Service";
+import { UserContext } from "../../context/AuthContext";
 
 const HomePage = () => {
-    useEffect(() => {
-        //chamar a api
-        async function getProximosEventos() {
-            try {
-                const promise = await api.get("/Evento/ListarProximos");
-                
-                console.log(promise.data);
-            } catch (error) {
-                console.error("Erro : " + error);
-                alert("Erro ao carregar os eventos");
-            }
-        }
+  const {userData} = useContext(UserContext)
 
-        getProximosEventos();
+  console.log("DADOS GLOBAIS DO USUÁRIO");
+  console.log(userData);
+    useEffect(()=> {
+      // chamar a api
+      async function getProximosEventos() {
+        try {
+          const promise = await api.get("/Evento/ListarProximos");
+
+          setNextEvents(promise.data);
+
+        } catch (error) {
+          console.log('Deu ruim na api');
+        }
+      }
+      getProximosEventos();
+       
     }, []);
 
-    // fake mock - api mocada
-    const [nextEvents, setNextEvents] = useState([]);
+  // fake mock - api mocada
+  const [nextEvents, setNextEvents] = useState([]);
 
-    return (
-        <MainContent>
-            <Banner />
+  return (
+    <MainContent>
+      <Banner />
 
-            <section className="proximos-eventos">
-                <Container>
-                    <Title titleText={"Próximos Eventos"} />
+      {/* PRÓXIMOS EVENTOS */}
+      <section className="proximos-eventos">
+        <Container>
+          <Title titleText={"Próximos Eventos"} />
 
-                    <div className="events-box">
-                        {nextEvents.map((event) => (
-                            <NextEvent
-                                key={event.idEvento}
-                                title={event.nomeEvento}
-                                description={event.descricao}
-                                eventDate={event.dataEvento}
-                                idEvento={event.idEvento}
-                            />
-                        ))}
-                    </div>
-                </Container>
+          <div className="events-box">
+            
+            {
+              nextEvents.map((e) => {
+                return(
+                    <NextEvent
+                      title={e.nomeEvento}
+                      description={ e.descricao}
+                      eventDate={e.dataEvento}
+                      idEvento={e.idEvento}
+                    />
+                );
+              })
+            }
+            
+          </div>
+        </Container>
+      </section>
 
-                <VisionSection />
-
-                <ContactSection />
-            </section>
-        </MainContent>
-    );
+      <VisionSection />
+      <ContactSection />
+    </MainContent>
+  );
 };
 
 export default HomePage;

@@ -100,7 +100,6 @@ const EventosPage = () => {
         }
         // chamar a api
         try {
-            console.log(nomeEvento, descricao, idTiposEvento, dataEvento + "T00:00:00.000Z", idInstituicao);
             const retorno = await api.post("/Evento", {
                 nomeEvento: nomeEvento,
                 descricao: descricao,

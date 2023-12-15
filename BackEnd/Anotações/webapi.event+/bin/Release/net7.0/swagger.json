@@ -59,45 +59,20 @@
             "description": "Success"
           }
         }
-      },
-      "post": {
-        "tags": [
-          "ComentariosEvento"
-        ],
-        "consumes": [
-          "application/json-patch+json",
-          "application/json",
-          "text/json",
-          "application/*+json"
-        ],
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "schema": {
-              "$ref": "#/definitions/ComentariosEvento"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success"
-          }
-        }
       }
     },
-    "/api/ComentariosEvento/BuscarPorIdUsuario/{id}": {
+    "/api/ComentariosEvento/BuscarPorIdUsuario": {
       "get": {
         "tags": [
           "ComentariosEvento"
         ],
         "parameters": [
           {
-            "in": "path",
-            "name": "id",
-            "required": true,
+            "in": "query",
+            "name": "idUsuario",
             "type": "string",
-            "format": "uuid"
+            "format": "uuid",
+            "collectionFormat": "multi"
           },
           {
             "in": "query",

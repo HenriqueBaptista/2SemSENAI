@@ -124,12 +124,22 @@ namespace webapi.event_.Repositories
 
                         Usuario = new Usuario
                         {
-                            Nome = c.Usuario!.Nome
+                            IdUsuario = c.Usuario!.IdUsuario,
+                            Nome = c.Usuario!.Nome,
+                            IdTipoUsuario = c.Usuario!.IdTipoUsuario,
+
+                            TipoUsuario = new TiposUsuario
+                            {
+                                IdTipoUsuario = c.Usuario.TipoUsuario!.IdTipoUsuario,
+                                Titulo = c.Usuario.TipoUsuario!.Titulo,
+                            }
                         },
 
                         Evento = new Evento
                         {
+                            IdEvento = c.IdEvento,
                             NomeEvento = c.Evento!.NomeEvento,
+                            DataEvento = c.Evento!.DataEvento,
                         }
 
                     }).ToList();

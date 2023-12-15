@@ -1,13 +1,41 @@
 import React from 'react';
 import './CardEvento.css'
 
-const CardEvento = () => {
+
+import dateFormatDbToView from '../../Utils/stringFunction';
+
+import TableDEv from '../../Pages/DetalhesEventoPage/TableDEv/TableDEv';
+
+const CardEvento = ({
+    titulo,
+    descricao,
+    dataEvento,
+    showListaComentariosButton,
+    showListaComentarios = false,
+}) => {
+    function setShowListaComentario() {
+
+    }
+
     return (
-        <div class="card-evento">
-            <h3 class="card-evento__titulo">Titulo do Evento</h3>
-            <p class="card-evento__text">Breve descrição do evento, pode ser um paragrafo pequenoBreve descrição do evento, pode ser um paragrafo pequeno.Breve descrição do evento, pode ser um paragrafo pequeno.</p>
-            <a href="" class="card-evento__conection">Conectar</a>
-        </div>
+        <article className='event-description-card'>
+            <h2 className='event-description-card__title'>{titulo}</h2>
+
+            <p className="event-card__description">{descricao}</p>
+
+            <p className="event-card__description">{dateFormatDbToView(dataEvento)}</p>
+
+
+
+            {showListaComentarios ?
+                <>
+                    {TableDEv}
+                </>
+                :
+                <>
+                    {null}
+                </>}
+        </article>
     );
 };
 
